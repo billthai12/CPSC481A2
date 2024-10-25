@@ -24,8 +24,11 @@ export default function LanguageButton() {
           onChange={handleChange}
         >
           <MenuItem value={10}>English</MenuItem>
-          <MenuItem value={20}>中国人</MenuItem>
-          <MenuItem value={30}>اردو</MenuItem>
+          <MenuItem value={20}>French</MenuItem>
+          <MenuItem value={30}>中国人</MenuItem>
+          <MenuItem value={40}>Punjabi</MenuItem>
+          <MenuItem value={50}>Spanish</MenuItem>
+          <MenuItem value={60}>Tagalog</MenuItem>
         </Select>
       </FormControl>
     </Box>
