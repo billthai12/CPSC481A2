@@ -2,9 +2,12 @@ import * as React from 'react';
 import COC_Logo from './images/logo-cityofcalgary.png';
 import './App.css';
 import LanguageButton from './components/LanguageButton';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
 
 function App() {
   return (
+    
     <div className="App">
       <header className="App-header">
         <img src={COC_Logo} alt="react logo" className="COCLogo"/>
@@ -20,8 +23,8 @@ function App() {
         <LanguageButton/>
         </div>
       </h2>
-
     </div>
+
   );
 }
 
