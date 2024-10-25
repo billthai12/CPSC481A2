@@ -14,3 +14,16 @@
   left: 15px;
   top: 15px;
 }
+
+.WelcomeContainer{
+  margin-top: 50px;
+}
+.SelectLanguage{
+  margin-top: 100px;
+}
+
+.LanguageButton{
+  width: 200px;
+  margin: 0 auto; /* Centers horizontally */
+  margin-top: 10px;
+}
