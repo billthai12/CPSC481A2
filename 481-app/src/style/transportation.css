@@ -1,0 +1,39 @@
+.Transportaion {
+    text-align: center;
+    margin: 20px;
+}
+
+.accordion-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.options-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.ride-share-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.ride-share-option strong {
+    margin-right: 15px;
+}
+
+
+.taxi-service-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.taxi-service-option strong {
+    margin-right: 15px;
+}
