@@ -5,6 +5,7 @@ import './App.css';
 import LanguageButton from './components/LanguageButton';
 import HomePage from './pages/HomePage'; 
 import GovernmentServicesPage from './pages/GovernmentServicesPage'; 
+import InternetPhonePlanPage from './pages/InternetPhonePlanPage';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         } />
 
         <Route path="/government-services" element={<GovernmentServicesPage />} />
+        <Route path="/internet-phone-plan" element={<InternetPhonePlanPage />} />
       </Routes>
     </Router>
   );
