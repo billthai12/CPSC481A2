@@ -1,6 +1,15 @@
+:root {
+    --red: #c8102e;
+    --white: #ffffff;
+}
+
 .EmergencyServices {
-    text-align: center;
-    margin: 20px;
+    padding: 20px;
+}
+
+.EmergencyServices h1 {
+    margin-bottom: 20px;
+    font-size: 2rem;
 }
 
 .accordion-container {
@@ -8,14 +17,11 @@
     margin: 0 auto;
 }
 
-.info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.info strong {
-    margin-right: 15px;
-    font-weight: 400;
+.button {
+    background-color: var(--white);
+    border: 2px solid var(--red);
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: var(--red);
+    transition: background-color 0.3s, color 0.3s;
 }

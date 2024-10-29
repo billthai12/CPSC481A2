@@ -3,7 +3,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import '../style/emergency.css'; 
-import CoCQR from '../images/uberQR.png'; // change qr code
+import CoCQR from '../images/emergency-coc-QR.png'; // change qr code
 
 function EmergencyServices() {
     const [showModal, setShowModal] = useState(false);
@@ -54,46 +54,30 @@ function EmergencyServices() {
                             <Accordion.Body>
                                 {item.title === 'Ambulance' && (
                                     <>
-                                        <ul>
-                                            <li className="info">
-                                                <strong><b>Emergency Line: 9-1-1</b></strong>
-                                                <strong><b>HealthLink Line: 8-1-1.</b> For general health information or advice.</strong>
-                                                <strong><b>Non-Emergency Mental Health Line: 2-1-1.</b> For mental health and addiction support, connection to food and basic needs, or access to community and social resources.</strong>
-                                                <Button variant="primary" onClick={() => openAmbulanceWebsite()}>Open Website</Button>
-                                            </li>
-                                        </ul>
+                                        <p><strong>Emergency Line: 9-1-1</strong></p>
+                                        <p><strong>HealthLink Line: 8-1-1.</strong> For general health information or advice.</p>
+                                        <p><strong>Non-Emergency Mental Health Line: 2-1-1.</strong> For mental health and addiction support, connection to food and basic needs, or access to community and social resources.</p>
+                                        <p><Button className="button" onClick={() => openAmbulanceWebsite()}>Open Website</Button></p>
                                     </>
                                 )}
                                 {item.title === 'Police' && (
                                     <>
-                                        <ul>
-                                            <li className="info">
-                                                <strong><b>Emergency Line: 9-1-1</b></strong>
-                                                <strong><b>Non-Emergency Line: 403-266-1234.</b> All public safety matters and reports of crime not in progress.</strong>
-                                                <Button variant="primary" onClick={() => openPoliceWebsite()}>Open Website</Button>
-                                            </li>
-                                        </ul>
+                                        <p><strong>Emergency Line: 9-1-1</strong></p>
+                                        <p><strong>Non-Emergency Line: 403-266-1234.</strong> All public safety matters and reports of crime not in progress.</p>
+                                        <p><Button className="button" onClick={() => openPoliceWebsite()}>Open Website</Button></p>
                                     </>
                                 )}
                                 {item.title === 'Fire Department' && (
                                     <>
-                                        <ul>
-                                            <li className="info">
-                                                <strong><b>Emergency Line: 9-1-1</b></strong>
-                                                <strong><b>Non-Emergency Line: 3-1-1</b></strong>
-                                                <Button variant="primary" onClick={() => openFireDeptWebsite()}>Open Website</Button>
-                                            </li>
-                                        </ul>
+                                        <p><strong>Emergency Line: 9-1-1</strong></p>
+                                        <p><strong>Non-Emergency Line: 3-1-1</strong></p>
+                                        <p><Button className="button" onClick={() => openFireDeptWebsite()}>Open Website</Button></p>
                                     </>
                                 )}
                                 {item.title === 'All City of Calgary Emergency Services' && (
                                     <>
-                                        <ul>
-                                            <li className="info">
-                                                <Button variant="primary" onClick={() => openCoCWebsite()}>Open Website</Button>
-                                                <Button variant="primary" onClick={() => handleShow(CoCQR)}>Website QR Code</Button>
-                                            </li>
-                                        </ul>
+                                        <p><Button className="button" onClick={() => openCoCWebsite()}>Open Website</Button></p>
+                                        <p><Button className="button" onClick={() => handleShow(CoCQR)}>Website QR Code</Button></p>
                                     </>
                                 )}
                             </Accordion.Body>
