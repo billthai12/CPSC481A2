@@ -22,6 +22,7 @@ function App() {
       <div className="App">
         <header className="App-header">
           <img src={COC_Logo} alt="COC logo" className="COCLogo" />
+          Newcomer Services Kiosk
         </header>
         
         <Routes>

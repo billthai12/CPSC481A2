@@ -21,6 +21,7 @@ function HomePage() {
   return (
     <>
       <div className='HomePageTitle'>
+      <Button className="BackButton" variant="danger" size="lg" onClick={() => navigate('/')}>Back to Language Select</Button>
         <h1>Home Page</h1>
       </div>
 
@@ -93,8 +94,6 @@ function HomePage() {
           </Col>
         </Row>
       </Container>
-
-      <Button className="BackButton" variant="secondary" size="lg" onClick={() => navigate('/')}>Back to Language Select</Button>
     </>
   );
 }
