@@ -1,6 +1,17 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Accordion, AccordionSummary, AccordionDetails, Typography, IconButton, Button, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
+import {
+    Accordion,
+    AccordionSummary,
+    AccordionDetails,
+    Typography,
+    IconButton,
+    Button,
+    Dialog,
+    DialogTitle,
+    DialogContent,
+    DialogActions
+} from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import Header from '../components/Header';
@@ -44,8 +55,10 @@ function GovernmentServicesPage() {
                             For more information, you can visit the official website:
                             <br />
                             <a 
-                                onClick={handleServiceOpen} // Open the dialog
-                                style={{ color: 'blue', textDecoration: 'underline', cursor: 'pointer' }}
+                                href="https://www.canada.ca/en/employment-social-development/corporate/portfolio/service-canada.html" 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                style={{ color: 'blue', textDecoration: 'underline' }}
                             >
                                 Learn more about Services Canada
                             </a>
@@ -62,74 +75,57 @@ function GovernmentServicesPage() {
                 </Accordion>
 
                 <Accordion>
-                    <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                        <Typography>Immigration</Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                        <Typography>
-                            Information regarding Immigration services.
-                        </Typography>
-                    </AccordionDetails>
-                </Accordion>
-                <Accordion>
-                    <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                        <Typography>Legal Services</Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                        <Typography>
-                            Details about Legal Services go here.
-                        </Typography>
-                    </AccordionDetails>
-                </Accordion>
+    <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+        <Typography>Immigration</Typography>
+    </AccordionSummary>
+    <AccordionDetails>
+        <Typography>
+            Immigration, Refugees and Citizenship Canada (IRCC) offers a range of services for those looking to travel, study, work, or immigrate to Canada. The key areas include:
+            <ul>
+                <li>**Travel:** Apply for a visitor visa or electronic travel authorization (eTA).</li>
+                <li>**Immigration:** Apply for permanent residence through various programs.</li>
+                <li>**Work:** Obtain or extend a work permit and learn about hiring foreign workers.</li>
+                <li>**Study:** Apply for study permits and student work permits.</li>
+                <li>**Citizenship:** Apply for Canadian citizenship and find information on citizenship tests.</li>
+                <li>**Refugees:** Claim refugee protection and find support services.</li>
+            </ul>
+            For more information regarding these services, visit the official government website:
+            <br />
+            <a 
+                href="https://www.canada.ca/en/services/immigration-citizenship.html" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                style={{ color: 'blue', textDecoration: 'underline' }}
+            >
+                Learn more about Immigration services
+            </a>
+        </Typography>
+    </AccordionDetails>
+</Accordion>
+
+
+<Accordion>
+    <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+        <Typography>Legal Services</Typography>
+    </AccordionSummary>
+    <AccordionDetails>
+        <Typography>
+            Calgary Legal Guidance (CLG) offers free legal advice and resources to vulnerable Albertans, including those experiencing family violence, homelessness, or health issues. While we don't represent clients in court, our volunteer lawyers provide assistance in preparing for legal matters. 
+            <br />
+            For more details, visit: 
+            <a 
+                href="https://clg.ab.ca/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                style={{ color: 'blue', textDecoration: 'underline' }}
+            >
+                Community Legal Guidance
+            </a>
+        </Typography>
+    </AccordionDetails>
+</Accordion>
+
             </div>
-
-            {/* Modal for Services Canada */}
-            <Dialog open={openServiceDialog} onClose={handleServiceClose}>
-                <DialogTitle>
-                    Services Canada
-                    <Button onClick={handleServiceClose} style={{ float: 'right' }}>
-                        X
-                    </Button>
-                </DialogTitle>
-                <DialogContent>
-                    <Typography>
-                     GET EMBEDDED POP UP TO OPEN herE
-                    </Typography>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleServiceClose} color="primary">
-                        Close
-                    </Button>
-                </DialogActions>
-            </Dialog>
-
-            {/* Modal for Map */}
-            <Dialog open={openMapDialog} onClose={handleMapClose}>
-                <DialogTitle>
-                    Open Map
-                    <Button onClick={handleMapClose} style={{ float: 'right' }}>
-                        X
-                    </Button>
-                </DialogTitle>
-                <DialogContent>
-                    <Typography>
-                        You can view the map at this link: 
-                        <a 
-                            href="https://www.google.com/maps" 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            style={{ color: 'blue', textDecoration: 'underline' }}
-                        >
-                            Google Maps
-                        </a>
-                    </Typography>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleMapClose} color="primary">
-                        Close
-                    </Button>
-                </DialogActions>
-            </Dialog>
 
             <footer className="footer-bar">
                 <Button onClick={handleEndClick} variant="contained" color="primary">End</Button>
