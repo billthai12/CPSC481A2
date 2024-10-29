@@ -1,0 +1,46 @@
+/* src/pages/GovernmentServicesPage.css */
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.title-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.title {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.accordion-container {
+    width: 80%;
+    margin: 20px auto;
+    flex: 1;
+}
+
+.footer-bar {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f0f0f0;
+    border-top: 1px solid #ddd;
+}
+
+.map-button-container {
+    position: fixed;
+    bottom: 60px; /* Adjust according to footer height */
+    right: 20px;  /* Adjust according to desired spacing from the right */
+}
+
+.map-button {
+    margin: 10px; /* Optional for spacing */
+}

@@ -1,0 +1,22 @@
+/* src/components/Header.css */
+.App-header {
+    text-align: center;
+    background-color: #282c34;
+    padding: 20px;
+    color: white;
+    min-height: 10vmin;
+  }
+  
+  .COCLogo {
+    height: 80px;
+  }
+  
+  .WelcomeContainer {
+    font-size: 24px;
+    margin: 10px 0;
+  }
+  
+  .SelectLanguage {
+    font-size: 18px;
+  }
+  
