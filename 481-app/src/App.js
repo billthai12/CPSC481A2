@@ -4,6 +4,7 @@ import COC_Logo from './images/logo-cityofcalgary.png';
 import './App.css';
 // import LanguageButton from './components/LanguageButton';
 import HomePage from './pages/HomePage';
+import HomePage2 from './pages/HomePage2';
 import Banking from './pages/Banking';
 import Transportation from './pages/Transportation';
 import LanguagePage from './pages/LanguagePage';
@@ -15,18 +16,18 @@ import GovernmentServicesPage from './pages/GovernmentServicesPage';
 import Resources from './pages/Resources';
 import Shopping from './pages/Shopping';
 
-
 function App() {
   return (
     <Router>
       <div className="App">
         <header className="App-header">
-          <img src={COC_Logo} alt="react logo" className="COCLogo" />
+          <img src={COC_Logo} alt="COC logo" className="COCLogo" />
         </header>
         
         <Routes>
           <Route path="/" element={<LanguagePage />} />
           <Route path="/home" element={<HomePage />} />
+          <Route path="/home/french" element={<HomePage2 />} />
           <Route path="/banking" element={<Banking />} />
           <Route path="/transportation" element={<Transportation />} />
           <Route path="/emergencyservices" element={<EmergencyServices />} />

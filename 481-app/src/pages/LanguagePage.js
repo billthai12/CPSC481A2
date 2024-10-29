@@ -1,29 +1,32 @@
 import * as React from 'react';
-import COC_Logo from '../images/logo-cityofcalgary.png';
-import LanguageButton from '../components/LanguageButton';
-
+import Button from 'react-bootstrap/Button';
+import '../App.css'
+import { useNavigate } from "react-router-dom";
 
 function LanguagePage(){
-    localStorage.clear();
-    return(
-        <div className="App">
+const navigate = useNavigate();
 
-        <header className="App-header">
-          <img src={COC_Logo} alt="react logo" className="COCLogo"/>
-        </header>
-        
-        <h1 classname = 'WelcomeContainer'>
-          Welcome to Calgary!
-        </h1>
-  
-        <h2 className='SelectLanguage'>
-          Select Language
-          <div className="LanguageButton"> 
-          <LanguageButton/>
-          </div>
-        </h2>
-        </div>
-    );
-};
+ return (
+<>
+  <h1 className='Welcome'> Welcome to Calgary!</h1>
+
+    <div className="LanguageSelect">
+      <h2> Select a Language</h2>
+
+      <div className="button-container">
+        <Button variant="info" size="lg" onClick={() => navigate('/home')}>English</Button>
+        <Button variant="info" size="lg" onClick={() => navigate('/home/french')}>Français</Button>
+        <Button variant="info" size="lg">中文</Button>
+        <Button variant="info"size="lg">ਪੰਜਾਬੀ</Button>
+        <Button variant="info"size="lg">Tagalog</Button>
+        <Button variant="info"size="lg">Español</Button>
+      </div>
+
+    </div>
+
+</>
+
+  );
+}
 
 export default LanguagePage;
