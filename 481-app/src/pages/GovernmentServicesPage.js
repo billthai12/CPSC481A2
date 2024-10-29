@@ -13,7 +13,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import Header from '../components/Header';
 import Footer from '../components/Footer'; // Import the new Footer component
-import './GovernmentServicesPage.css';
+import '../style/GovernmentServicesPage.css';
 
 function GovernmentServicesPage() {
     const navigate = useNavigate();
