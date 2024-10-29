@@ -18,7 +18,7 @@ function GovernmentServicesPage() {
     const [openMapDialog, setOpenMapDialog] = useState(false);
 
     const handleEndClick = () => navigate('/');
-    const handleHomeClick = () => navigate('/homepage');
+    const handleHomeClick = () => navigate('/home');
     const handleBackClick = () => navigate(-1);
 
     const handleMapOpen = (url) => {
