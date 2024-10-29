@@ -16,7 +16,7 @@ function Transportation() {
         { title: 'Rental Cars', price: '$$$', eventKey: '1' },
         { title: 'Taxis', price: '$$', eventKey: '0' },
         { title: 'Calgary Transit', price: '$', eventKey: '2' },
-        { title: 'Ride Apps', price: '$$', eventKey: '3' },
+        { title: 'Ride-Share Apps', price: '$$', eventKey: '3' },
     ];
 
     const sortAccordionItems = (items) => {
@@ -67,83 +67,78 @@ function Transportation() {
             </div>
 
             <div className="accordion-container">
-                <Accordion defaultActiveKey="0">
+                <Accordion defaultActiveKey="2">
                     {sortAccordionItems(accordionItems).map(item => (
                         <Accordion.Item eventKey={item.eventKey} key={item.eventKey}>
                             <Accordion.Header>{item.title} - {item.price}</Accordion.Header>
                             <Accordion.Body>
                                 {item.title === 'Rental Cars' && (
                                     <>
-                                        <h5>Rental Car Companies in Calgary:</h5>
-                                        <ul>
-                                            <li className="ride-share-option">
-                                                <strong>Enterprise</strong>
-                                                <Button variant="primary" onClick={() => openRentalCarWebsite("https://www.enterprise.com/en/home.html")}>Visit Website</Button>
-                                            </li>
-                                            <li className="ride-share-option">
-                                                <strong>Budget</strong>
-                                                <Button variant="primary" onClick={() => openRentalCarWebsite("https://www.budget.com/en/home")}>Visit Website</Button>
-                                            </li>
-                                            <li className="ride-share-option">
-                                                <strong>Hertz</strong>
-                                                <Button variant="primary" onClick={() => openRentalCarWebsite("https://www.hertz.com/rentacar/reservation/")}>Visit Website</Button>
-                                            </li>
-                                            <li className="ride-share-option">
-                                                <strong>National</strong>
-                                                <Button variant="primary" onClick={() => openRentalCarWebsite("https://www.nationalcar.com/en/home.html")}>Visit Website</Button>
-                                            </li>
-                                        </ul>
+                                        <h5>Rental Car Companies</h5>
+                                            <ul>
+                                                <li className="ride-share-option">
+                                                    <strong>Budget</strong> Affordable rental options for every budget.
+                                                    <Button variant="primary" onClick={() => openRentalCarWebsite("https://www.budget.com/en/home")}>Visit Website</Button>
+                                                </li>
+                                                <li className="ride-share-option">
+                                                    <strong>Enterprise</strong> Reliable rental cars for all your travel needs.
+                                                    <Button variant="primary" onClick={() => openRentalCarWebsite("https://www.enterprise.com/en/home.html")}>Visit Website</Button>
+                                                </li>
+                                                <li className="ride-share-option">
+                                                    <strong>Hertz</strong> Convenient rentals with a wide range of choices.
+                                                    <Button variant="primary" onClick={() => openRentalCarWebsite("https://www.hertz.com/rentacar/reservation/")}>Visit Website</Button>
+                                                </li>
+                                                <li className="ride-share-option">
+                                                    <strong>National</strong> Quality vehicles for business or vacation.
+                                                    <Button variant="primary" onClick={() => openRentalCarWebsite("https://www.nationalcar.com/en/home.html")}>Visit Website</Button>
+                                                </li>
+                                            </ul>
                                     </>
                                 )}
                                 {item.title === 'Taxis' && (
                                     <>
                                         <h5>Taxi Services in Calgary</h5>
-                                        <ul>
-                                            <li className="taxi-service-option">
-                                                <strong>Yellow Cab</strong>
-                                                <Button variant="primary" onClick={() => openTaxiWebsite("https://yellowcabcalgary.com/")}>Visit Website</Button>
-                                            </li>
-                                            <li className="taxi-service-option">
-                                                <strong>Checker Cabs</strong>
-                                                <Button variant="primary" onClick={() => openTaxiWebsite("https://www.checkercabs.ca/")}>Visit Website</Button>
-                                            </li>
-                                            <li className="taxi-service-option">
-                                                <strong>Globe Cabs</strong>
-                                                <Button variant="primary" onClick={() => openTaxiWebsite("https://www.globecab.com/")}>Visit Website</Button>
-                                            </li>
-                                            <li className="taxi-service-option">
-                                                <strong>Airport Taxi</strong>
-                                                <Button variant="primary" onClick={() => openTaxiWebsite("https://www.calgaryairporttaxi.com/")}>Visit Website</Button>
-                                            </li>
-                                        </ul>
+                                            <ul className="taxi-service-list">
+                                                <li className="taxi-service-option">
+                                                    <strong>Checker Cabs</strong>
+                                                    <p>Calgary's largest fleet, offering accessible and affordable rides across the city.</p>
+                                                    <Button variant="primary" onClick={() => openTaxiWebsite("https://www.thecheckergroup.com/")}>Visit Website</Button>
+                                                </li>
+                                                <li className="taxi-service-option">
+                                                    <strong>United Cabs</strong>
+                                                    <p>Known for excellent service, available 24/7, and easy reservation options.</p>
+                                                    <Button variant="primary" onClick={() => openTaxiWebsite("https://calgarycabs.ca/")}>Visit Website</Button>
+                                                </li>
+                                                <li className="taxi-service-option">
+                                                    <strong>Airport Taxi</strong>
+                                                    <p>Specialized in airport transfers with spacious vehicles for luggage.</p>
+                                                    <Button variant="primary" onClick={() => openTaxiWebsite("https://www.yyc.com/en-us/transportation/taxis-sedans")}>Visit Website</Button>
+                                                </li>
+                                            </ul>
                                     </>
                                 )}
                                 {item.title === 'Calgary Transit' && (
-                                    <>
-                                        <h5>Calgary Transit</h5>
-                                        <p><strong>Fares:</strong> $3.50 for adults, $2.50 for youth, and $1.75 for seniors.</p>
-                                        <p><strong>Hours of Service:</strong> Buses operate from 5 AM to midnight, trains run from 4 AM to 1 AM.</p>
-                                        <Button variant="primary" onClick={openTransitWebsite}>Visit Official Website</Button>
-                                    </>
+                                <>
+                                    <h5>Calgary Transit</h5>
+                                    <p><strong>Fares:</strong> $3.50 for adults, $2.50 for youth, and $1.75 for seniors.</p>
+                                    <p><strong>Hours of Service:</strong> Buses operate from 5 AM to midnight, trains run from 4 AM to 1 AM.</p>
+                                    <Button className="transit-button" onClick={openTransitWebsite}>Visit Official Website</Button>
+                                </>
                                 )}
-                                {item.title === 'Ride Apps' && (
-                                    <>
-                                        <h5>Popular Ride Share Apps:</h5>
-                                        <ul>
-                                            <li className="ride-share-option">
-                                                <strong>Uber</strong> - A widely-used ride-hailing app that connects passengers with drivers for quick and convenient rides.
-                                                <Button variant="primary" onClick={() => handleShow(uberQR)}>Download Uber</Button>
-                                            </li>
-                                            <li className="ride-share-option">
-                                                <strong>Lyft</strong> - Another popular ride-sharing service known for its friendly drivers and user-friendly app experience.
-                                                <Button variant="primary" onClick={() => handleShow(lyftQR)}>Download Lyft</Button>
-                                            </li>
-                                            <li className="ride-share-option">
-                                                <strong>Communauto</strong> - A car-sharing service that allows users to rent cars for short periods, perfect for those who need a vehicle occasionally.
-                                                <Button variant="primary" onClick={() => handleShow(communautoQR)}>Download Communauto</Button>
-                                            </li>
-                                        </ul>
-                                    </>
+                                {item.title === 'Ride-Share Apps' && (
+                                <>
+                                    <h5>Popular Ride-Share Apps</h5>
+                                    <ul>
+                                        <li className="ride-share-option">
+                                            <strong>Uber</strong> A popular app that helps you find quick rides nearby.
+                                            <Button variant="primary" onClick={() => handleShow(uberQR)}>Download Uber</Button>
+                                        </li>
+                                        <li className="ride-share-option">
+                                            <strong>Lyft</strong> Another easy-to-use app known for friendly drivers and fast rides.
+                                            <Button variant="primary" onClick={() => handleShow(lyftQR)}>Download Lyft</Button>
+                                        </li>
+                                    </ul>
+                                </>
                                 )}
                             </Accordion.Body>
                         </Accordion.Item>

@@ -6,11 +6,11 @@ import scotiabankLogo from '../images/scotiabank.png';
 import bmoLogo from '../images/bmo.png';
 import cibcLogo from '../images/cibc.png';
 import atbLogo from '../images/atb.png';
-import { Card, Button, Dropdown } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Banking() {
-    const [sortCriteria, setSortCriteria] = useState('distance');
+    const [sortCriteria, setSortCriteria] = useState('distanceLowToHigh');
 
     const banks = [
         { name: 'TD', logo: tdLogo, website: 'https://www.td.com', distance: 2.3, rating: 4.5 },
@@ -21,9 +21,13 @@ function Banking() {
         { name: 'ATB Financial', logo: atbLogo, website: 'https://www.atb.com', distance: 3.5, rating: 3.9 },
     ];
 
+    const handleSortChange = (e) => {
+        setSortCriteria(e.target.value);
+    };
+
     const sortedBanks = [...banks].sort((a, b) => {
-        if (sortCriteria === 'distance') return a.distance - b.distance;
-        if (sortCriteria === 'rating') return b.rating - a.rating;
+        if (sortCriteria === 'distanceLowToHigh') return a.distance - b.distance;
+        if (sortCriteria === 'ratingHighToLow') return b.rating - a.rating;  // Sort from high to low for rating
         return 0;
     });
 
@@ -52,16 +56,11 @@ function Banking() {
             <h1>Banking</h1>
 
             <div className="sort-container">
-                <Dropdown>
-                    <Dropdown.Toggle variant="success" id="sort-dropdown">
-                        Sort by: {sortCriteria === 'distance' ? 'Distance' : 'Rating'}
-                    </Dropdown.Toggle>
-
-                    <Dropdown.Menu>
-                        <Dropdown.Item onClick={() => setSortCriteria('distance')}>Distance</Dropdown.Item>
-                        <Dropdown.Item onClick={() => setSortCriteria('rating')}>Rating</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
+                <label htmlFor="sort">Sort by:</label>
+                <select id="sort" value={sortCriteria} onChange={handleSortChange}>
+                    <option value="distanceLowToHigh">Distance</option>
+                    <option value="ratingHighToLow">Rating</option>
+                </select>
             </div>
 
             <div className="banks-container">
