@@ -3,7 +3,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import '../style/emergency.css'; 
-import CoCQR from '../images/emergency-coc-QR.png'; // change qr code
+import CoCQR from '../images/emergency-coc-QR.png';
 
 function EmergencyServices() {
     const [showModal, setShowModal] = useState(false);

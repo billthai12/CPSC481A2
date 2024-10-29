@@ -3,18 +3,18 @@
     --white: #ffffff;
 }
 
-.EmergencyServices {
+.Map {
     padding: 20px;
 }
 
-.EmergencyServices h1 {
+.Map h1 {
     margin-bottom: 20px;
     font-size: 2rem;
 }
 
-.accordion-container {
-    max-width: 800px;
-    margin: 0 auto;
+.category-buttons {
+    display: flex;
+    justify-content: space-around;
 }
 
 .button {
@@ -26,7 +26,17 @@
     transition: background-color 0.3s, color 0.3s;
 }
 
-.button:hover {
+.button:hover, .button.selected {
     background-color: var(--red);
     color: var(--white);
+}
+  
+.map-container {
+    border: 1px solid #ddd;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    background-color: #f9f9f9;
 }
