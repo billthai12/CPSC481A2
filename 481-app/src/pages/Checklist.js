@@ -305,11 +305,6 @@ function Checklist() {
                 <Modal.Body>
                     <img src={currentImage} alt="Download QR Code" style={{ width: '100%' }} />
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
-                    </Button>
-                </Modal.Footer>
             </Modal>
         </div>
     );
