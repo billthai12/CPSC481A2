@@ -1,0 +1,21 @@
+.EmergencyServices {
+    text-align: center;
+    margin: 20px;
+}
+
+.accordion-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.info strong {
+    margin-right: 15px;
+    font-weight: 400;
+}
