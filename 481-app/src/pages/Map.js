@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import {Button, ButtonGroup, Modal} from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import '../style/map.css'; 
-// import myLocationImage from '../images/myLocation.png';
-// import hotelImage from '../images/hotel.png';
-// import attractionImage from '../images/attraction.png';
-// import groceryImage from '../images/grocery.png';
-// import libraryImage from '../images/library.png';
-// import communityCenterImage from '../images/communityCenter.png';
+import myLocationImage from '../images/mylocation.png';
+import hotelsImage from '../images/hotels.png';
+import attractionsImage from '../images/attractions.png';
+import groceryImage from '../images/grocery.png';
+import libraryImage from '../images/library.png';
+import communityCentersImage from '../images/communitycenters.png';
 
 function Map() {
-    const [selectedCategory, setSelectedCategory] = useState(null);
+    const [selectedCategory, setSelectedCategory] = useState('My Location');
     const [showModal, setShowModal] = useState(false);
     const [currentContent, setCurrentContent] = useState('');
     const navigate = useNavigate();
@@ -19,14 +19,14 @@ function Map() {
         setSelectedCategory(category);
     };
 
-    // const categoryImages = {
-    //     'My Location': myLocationImage,
-    //     'Hotels': hotelImage,
-    //     'Attractions': attractionImage,
-    //     'Grocery': groceryImage,
-    //     'Library': libraryImage,
-    //     'Community Centers': communityCenterImage,
-    // };
+    const categoryImages = {
+        'My Location': myLocationImage,
+        'Hotels': hotelsImage,
+        'Attractions': attractionsImage,
+        'Grocery': groceryImage,
+        'Library': libraryImage,
+        'Community Centers': communityCentersImage,
+    };
 
     const handleShow = (content) => {
         setCurrentContent(content);
@@ -110,15 +110,11 @@ function Map() {
             </ButtonGroup>
 
             <div className="map-container">
-                {/* {selectedCategory ? (
-                    <img
-                        src={categoryImages[selectedCategory]}
-                        alt={`${selectedCategory} Map`}
-                        className="map-image"
-                    />
-                ) : (
-                    <h5>You Are Here</h5>
-                )} */}
+                <img
+                    src={categoryImages[selectedCategory]}
+                    alt={`${selectedCategory} MyLocation`}
+                    className="map-image"
+                />
             </div>
 
             <Modal show={showModal} onHide={handleClose}>
@@ -129,7 +125,9 @@ function Map() {
                     <p><b>How to use the map:</b></p>
                     <p>1. Select your desired category of places you would like to view on the map.</p>
                     <p>2. View the nearest places (of the category you selected) according to your current location.</p>
-                    <p>3. Find out how to get there by pressing the 'Transportation Info Page'.</p>
+                    <p>3. Feel free to filter out any category you desire.</p>
+                    <p>4. Select a place you would like to go and view its information and directions.</p>
+                    <p>5. Find out more about the modes of transportation in Calgary by pressing the 'Transportation Info Page'.</p>
                 </Modal.Body>
             </Modal>
       </div>
