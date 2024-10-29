@@ -5,6 +5,13 @@
 .App-header {
   background-color: #282c34;
   min-height: 19vmin;
+  font-size: 2rem; /* Adjust size as needed */
+  font-weight: bold; /* Optional: makes the text stand out more */
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 .COCLogo {
@@ -16,15 +23,15 @@
 }
 
 .Welcome  {
-  margin-top: 50px;
+  margin-top: 75px;
 }
 
 .button-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 20px;
+  gap: 30px;
+  padding-top: 30px ;
 }
 
 .LanguageSelect {
@@ -35,13 +42,25 @@
   margin-top: 30px;
 }
 
-.HomePageTitle{
-  margin-top: 10px;
+/* Align the title in the center and back button on the left */
+.HomePageTitle {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
 }
 
-.BackButton{
-  margin-top: 10px;
-  display: flex;
+/* Position the back button on the left side */
+.BackButton {
+  position: absolute;
+  left: 20px; /* Adjust as needed for spacing */
+}
+
+/* Center the title in the remaining space */
+.HomePageTitle h1 {
+  margin: 0;
 }
 
 .ChoicesContainer .card {

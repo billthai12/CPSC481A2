@@ -1,6 +1,6 @@
 import React from 'react';
 import COC_Logo from '../images/logo-cityofcalgary.png';
-import './Header.css';
+import './Header.css'; // Optional: Add styling specific to the header
 
 
 function Header() {
