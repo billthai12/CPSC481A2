@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import COC_Logo from './images/logo-cityofcalgary.png';
 import './App.css';
 // import LanguageButton from './components/LanguageButton';
