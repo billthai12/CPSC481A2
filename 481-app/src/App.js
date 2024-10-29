@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import COC_Logo from './images/logo-cityofcalgary.png';
 import './App.css';
 // import LanguageButton from './components/LanguageButton';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import Banking from './pages/Banking';
 import Transportation from './pages/Transportation';
