@@ -1,6 +1,15 @@
-.checklist {
-    text-align: center;
-    margin: 20px;
+:root {
+    --red: #c8102e;
+    --white: #ffffff;
+}
+
+.Checklist {
+    padding: 20px;
+}
+
+.Checklist h1 {
+    margin-bottom: 20px;
+    font-size: 2rem;
 }
 
 .accordion-container {
@@ -8,14 +17,22 @@
     margin: 0 auto;
 }
 
-.info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
+.button {
+    background-color: var(--white);
+    border: 2px solid var(--red);
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: var(--red);
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.info strong {
-    margin-right: 15px;
-    font-weight: 400;
+.button:hover {
+    background-color: var(--red);
+    color: var(--white);
+}
+
+.in-line {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
 }

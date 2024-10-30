@@ -76,8 +76,10 @@ function EmergencyServices() {
                                 )}
                                 {item.title === 'All City of Calgary Emergency Services' && (
                                     <>
-                                        <p><Button className="button" onClick={() => openCoCWebsite()}>Open Website</Button></p>
-                                        <p><Button className="button" onClick={() => handleShow(CoCQR)}>Website QR Code</Button></p>
+                                        <div className="in-line-buttons">
+                                            <Button className="button" onClick={() => openCoCWebsite()}>Open Website</Button>
+                                            <Button className="button" onClick={() => handleShow(CoCQR)}>Website QR Code</Button>
+                                        </div>
                                     </>
                                 )}
                             </Accordion.Body>

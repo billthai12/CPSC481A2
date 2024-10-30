@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -10,6 +11,7 @@ import AHCIPQR from '../images/uberQR.png'; // change qr code
 function Checklist() {
     const [showModal, setShowModal] = useState(false);
     const [currentImage, setCurrentImage] = useState('');
+    const navigate = useNavigate();
 
     const accordion1Items = [
         { title: 'Visit/Call Immigration, Refugees and Citizenship Canada (IRCC)', eventKey: '0' },
@@ -61,7 +63,7 @@ function Checklist() {
 
 
     return (
-        <div className="checklist">
+        <div className="Checklist">
             <h1>Newcomer's To-Do List</h1>
             <br />
             <div className="accordion-container">
@@ -73,79 +75,65 @@ function Checklist() {
                             <Accordion.Body>
                                 {item.title === 'Visit/Call Immigration, Refugees and Citizenship Canada (IRCC)' && (
                                     <>
-                                        <ul>
-                                            <li className="info">
-                                                <strong><b>IRCC Client Support Center: 1-888-242-2100</b> - Monday to Friday, 8 a.m. to 4 p.m. (your local time)</strong>
-                                                <Button variant="primary" onClick={() => openIRCCClientSupportCenterWebsite()}>Open IRCC Website</Button>
-                                                <Button variant="primary" onClick={() => handleShow(clientSupportQR)}>Website QR Code</Button>
-                                                {/* the closest office is in edmonton */}
-                                            </li>
-                                        </ul>
+                                        <p><strong>IRCC Client Support Center: 1-888-242-2100</strong></p>
+                                        <p>Monday to Friday, 8 a.m. to 4 p.m. (your local time)</p>
+                                        <div className="in-line">
+                                            <p><Button className="button" onClick={() => openIRCCClientSupportCenterWebsite()}>Open IRCC Website</Button></p>
+                                            <p><Button className="button" onClick={() => handleShow(clientSupportQR)}>Website QR Code</Button></p>
+                                        </div>
+                                        <p>*Unfortunately the closest IRCC center is in <strong>Edmonton</strong>*</p>
                                     </>
                                 )}
                                 {item.title === 'Apply for SIN Card' && (
                                     <>
-                                        <ul>
-                                            <li className="info">
-                                                <strong><b>Read about the required documents for a Social Insurance Number (SIN)</b></strong>
-                                                <Button variant="primary" onClick={() => openSINWebsite()}>Open Website</Button>
-                                                <Button variant="primary" onClick={() => handleShow(SINQR)}>Website QR Code</Button>
-                                                {/* find on map button */}
-                                            </li>
-                                        </ul>
+                                        <p><strong>Read about the required documents for a Social Insurance Number (SIN) and apply</strong></p>
+                                        <div className="in-line">
+                                            <p><Button className="button" onClick={() => openSINWebsite()}>Open Website</Button></p>
+                                            <p><Button className="button" onClick={() => handleShow(SINQR)}>Website QR Code</Button></p>
+                                            {/* find on map button */}
+                                        </div>
+                                        <p>If you are a Canadian citizen, a permanent resident or a temporary resident, you need a Social Insurance Number (SIN) to work in Canada or to receive benefits and services from government programs. Children 12 years of age or older may apply for their SIN.</p>
                                     </>
                                 )}
                                 {item.title === 'Get Health Insurance Card' && (
                                     <>
-                                        <ul>
-                                            <li className="info">
-                                                <strong><b>Read about how to apply for an Alberta Health Care Insurance Plan (AHCIP)</b></strong>
-                                                <Button variant="primary" onClick={() => openAHCIPWebsite()}>Open Website</Button>
-                                                <Button variant="primary" onClick={() => handleShow(AHCIPQR)}>Website QR Code</Button>
-                                                {/* find on map button */}
-                                            </li>
-                                        </ul>
+                                        <p><strong>Read about how to apply for an Alberta Health Care Insurance Plan (AHCIP)</strong></p>
+                                        <div className="in-line">
+                                            <p><Button className="button" onClick={() => openAHCIPWebsite()}>Open Website</Button></p>
+                                            <p><Button className="button" onClick={() => handleShow(AHCIPQR)}>Website QR Code</Button></p>
+                                            {/* find on map button */}
+                                        </div>
+                                        <p>All new and returning Alberta residents must register for Alberta Health Care Insurance Plan (AHCIP) coverage to receive insured hospital and physician services.</p>
                                     </>
                                 )}
                                 {item.title === 'Open Bank Account' && (
                                     <>
-                                        <ul>
-                                            <li className="info">
-                                                <strong><b>The Banking page should provide you with details of the popular/closest banks in the area.</b></strong>
-                                                {/* open banking page */}
-                                            </li>
-                                        </ul>
+                                        <p><strong>The Banking page should provide you with details of the popular/closest banks in the area.</strong></p>
+                                        <p><Button className="button" onClick={() => navigate("/banking")}>Open Banking Page</Button></p>
+                                        <p>Building your Canadian life begins by building good credit history. Lenders look at your credit history score to approve you for loans. The first step is to open a bank account, after which you can apply for a credit card to ease payments and build your credit history.</p>
                                     </>
                                 )}
                                 {item.title === 'Get Access to Internet and Phone Calls' && (
                                     <>
-                                        <ul>
-                                            <li className="info">
-                                                <strong><b>Your nearest library should provide internet access and allow you to make phone calls.</b></strong>
-                                                {/* find on map button */}
-                                            </li>
-                                        </ul>
+                                        <p><strong>Your nearest library should provide you with temporary internet access and allow you to make phone calls.</strong></p>
+                                        <p>Another option is to <strong>find internet and phone plans for your home</strong>. The Internet and Cellular page should provide you with details of the popular/closest providers in the area.</p>
+                                        {/* find on map button */}
+                                        <p><Button className="button" onClick={() => navigate("/internet")}>Open Internet and Cellular Page</Button></p>
+                                        <p>Staying connected with loved ones, searching for job opportunities, and settling into your new life in Canada requires dependable mobile phone and internet services. Canada's phone and internet industries are newcomer friendly, but can be difficult to navigate as you begin a new life in a new country.</p>
                                     </>
                                 )}
                                 {item.title === 'Memorize Emergency Numbers' && (
                                     <>
-                                        <ul>
-                                            <li className="info">
-                                                <strong><b>The Emergency Services page has a link to a list of all emergency and non-emergency numbers you should know.</b></strong>
-                                                {/* open emergency services page */}
-                                            </li>
-                                        </ul>
+                                        <p><strong>The Emergency Services page has a link to a list of all emergency and non-emergency numbers you should know.</strong></p>
+                                        <p><Button className="button" onClick={() => navigate("/emergencyservices")}>Open Emergency Services Page</Button></p>
+                                        <p>Emergency helpline numbers are essential for everyone to know in case of any emergencies such as medical emergencies, criminal activity, calamity, or natural disasters. In case of such unfortunate emergencies, we should not be running around scouting for help or trying to figure out who to call for help.</p>
                                     </>
                                 )}
                                 {item.title === 'Find Childcare & Schools' && (
                                     <>
-                                        <ul>
-                                            <li className="info">
-                                                <strong><b>Your children, if any, should go to school??????</b></strong>
-                                                {/* website with all public schools in calgary??? */}
-                                                {/* find on map button */}
-                                            </li>
-                                        </ul>
+                                        <p><strong>Your children, if any, should go to school??????</strong></p>
+                                        {/* website with all public schools in calgary??? */}
+                                        {/* find on map button */}
                                     </>
                                 )}
                                 {item.title === 'Get Credentials Accredited' && (
