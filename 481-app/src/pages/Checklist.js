@@ -72,6 +72,22 @@ function Checklist() {
         window.open(url, '_blank', "width=800,height=600")
     };
 
+    const openMapPopup = (location) => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                const latitude = position.coords.latitude;
+                const longitude = position.coords.longitude;
+                const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(location)}&origin=${latitude},${longitude}`;
+                window.open(mapsUrl, 'MapPopup', 'width=800,height=600,menubar=no,toolbar=no,location=no,status=no');
+            }, (error) => {
+                console.error('Error getting location: ', error);
+                alert('Unable to retrieve your location. Please enable location services or try again.');
+            });
+        } else {
+            alert('Geolocation is not supported by this browser.');
+        }
+    };
+
     return (
         <div className="Checklist">
             <h1>Newcomer's To-Do List</h1>
@@ -102,23 +118,23 @@ function Checklist() {
                                 )}
                                 {item.title === 'Apply for SIN Card' && (
                                     <>
-                                        <p><strong>Read about the required documents for a Social Insurance Number (SIN) and apply.</strong></p>
+                                        <p><strong>Read about the required documents for a Social Insurance Number (SIN) and apply at a registry.</strong></p>
                                         <div className="in-line">
                                             <p><Button className="button" onClick={() => openWebsite("https://www.canada.ca/en/employment-social-development/services/sin/apply.html")}>Open Government of Canada Website</Button></p>
                                             <p><Button className="button" onClick={() => handleShow(SINQR)}>Website QR Code</Button></p>
-                                            {/* find registry on map button ?? */}
                                         </div>
+                                        <p><Button className="button" onClick={() => openMapPopup("Registry")}>Find on Map</Button></p>
                                         <p>If you are a Canadian citizen, a permanent resident or a temporary resident, you need a Social Insurance Number (SIN) to work in Canada or to receive benefits and services from government programs. Children 12 years of age or older may apply for their SIN.</p>
                                     </>
                                 )}
                                 {item.title === 'Get Health Insurance Card' && (
                                     <>
-                                        <p><strong>Read about the required documents for an Alberta Health Care Insurance Plan (AHCIP) and apply.</strong></p>
+                                        <p><strong>Read about the required documents for an Alberta Health Care Insurance Plan (AHCIP) and apply at a registry.</strong></p>
                                         <div className="in-line">
                                             <p><Button className="button" onClick={() => openWebsite("https://www.alberta.ca/ahcip-how-to-apply")}>Open Alberta Website</Button></p>
                                             <p><Button className="button" onClick={() => handleShow(AHCIPQR)}>Website QR Code</Button></p>
-                                            {/* find registry on map button ?? */}
                                         </div>
+                                        <p><Button className="button" onClick={() => openMapPopup("Registry")}>Find on Map</Button></p>
                                         <p>All new and returning Alberta residents must register for Alberta Health Care Insurance Plan (AHCIP) coverage to receive insured hospital and physician services.</p>
                                     </>
                                 )}
@@ -132,8 +148,8 @@ function Checklist() {
                                 {item.title === 'Get Access to Internet and Phone Calls' && (
                                     <>
                                         <p><strong>Your nearest library should provide you with temporary internet access and allow you to make phone calls.</strong></p>
+                                        <p><Button className="button" onClick={() => openMapPopup("Public Library")}>Find on Map</Button></p>
                                         <p>Another option is to <strong>find internet and phone plans for your home</strong>. The Internet and Cellular page should provide you with details of the popular/closest providers in the area.</p>
-                                        {/* find libraries on map button */}
                                         <p><Button className="button" onClick={() => navigate("/internet")}>Open Internet and Cellular Page</Button></p>
                                         <p>Staying connected with loved ones, searching for job opportunities, and settling into your new life in Canada requires dependable mobile phone and internet services. Canada's phone and internet industries are newcomer friendly, but can be difficult to navigate as you begin a new life in a new country.</p>
                                     </>
@@ -240,7 +256,7 @@ function Checklist() {
                                             <p><Button className="button" onClick={() => window.open("https://www.alberta.ca/get-drivers-licence")}>Open Alberta Website</Button></p>
                                             <p><Button className="button" onClick={() => handleShow(driversLicenseQR)}>Website QR Code</Button></p>
                                         </div>
-                                        {/* find registry on map button ?? */}
+                                        <p><Button className="button" onClick={() => openMapPopup("Registry")}>Find on Map</Button></p>
                                         <p>Each province has specific requirements and tests. Learn more about the process, including document requirements and fees.</p>
                                     </>
                                 )}
@@ -313,7 +329,6 @@ function Checklist() {
                                             <p><Button className="button" onClick={() => openWebsite("https://www.alberta.ca/designated-post-secondary-institutions-alberta")}>Open Alberta Website</Button></p>
                                             <p><Button className="button" onClick={() => handleShow(postSecondaryQR)}>Website QR Code</Button></p>
                                         </div>
-                                        {/* find uni/college on map button */}
                                         <p>Canada offers many recognized programs, including universities, colleges, and technical training centers.</p>
                                     </>
                                 )}
@@ -324,7 +339,7 @@ function Checklist() {
                                             <p><Button className="button" onClick={() => openWebsite("https://www.albertahealthservices.ca/services/page11443.aspx")}>Open AHS Website</Button></p>
                                             <p><Button className="button" onClick={() => handleShow(mentalHealthSupportQR)}>Website QR Code</Button></p>
                                         </div>
-                                        {/* find mental health support on map button */}
+                                        <p><Button className="button" onClick={() => openMapPopup("Mental Health Support")}>Find on Map</Button></p>
                                         <p><strong>Non-Emergency Mental Health Line: 2-1-1.</strong></p>
                                         <p>Taking care of your mental health is essential, especially during significant life transitions.</p>
                                     </>
