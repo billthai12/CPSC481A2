@@ -4,24 +4,29 @@ import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import '../style/checklist.css'; 
-import clientSupportQR from '../images/uberQR.png'; // change qr code
-import SINQR from '../images/uberQR.png'; // change qr code
-import AHCIPQR from '../images/uberQR.png'; // change qr code
-import schoolsQR from '../images/uberQR.png'; // change qr code
-import newcomerServicesQR from '../images/uberQR.png'; // change qr code
-import GoCEngNFrQR from '../images/uberQR.png'; // change qr code
-import childTaxBenefitQR from '../images/uberQR.png'; // change qr code
-import driversLicenseQR from '../images/uberQR.png'; // change qr code
-import lawsQR from '../images/uberQR.png'; // change qr code
-import jobSearchQR from '../images/uberQR.png'; // change qr code
-import jobBankQR from '../images/uberQR.png'; // change qr code
-import rentHomeQR from '../images/uberQR.png'; // change qr code
-import buyHomeQR from '../images/uberQR.png'; // change qr code
-import homeLawsQR from '../images/uberQR.png'; // change qr code
-import employeeLawsQR from '../images/uberQR.png'; // change qr code
-import familyDocQR from '../images/uberQR.png'; // change qr code
-import postSecondaryQR from '../images/uberQR.png'; // change qr code
-import mentalHealthSupportQR from '../images/uberQR.png'; // change qr code
+import clientSupportQR from '../images/checklist-images/clientSupportQR.png';
+import newcomerServicesQR from '../images/checklist-images/newcomerServicesQR.png';
+import SINQR from '../images/checklist-images/SINQR.png';
+import AHCIPQR from '../images/checklist-images/AHCIPQR.png';
+import schoolsQR from '../images/checklist-images/schoolsQR.png';
+import qualificationsQR from '../images/checklist-images/qualificationsQR.png';
+import jobSearchQR from '../images/checklist-images/jobSearchQR.png';
+import jobBankQR from '../images/checklist-images/jobBankQR.png';
+import CLARCQR from '../images/checklist-images/CLARCQR.png';
+import GoCEngNFrQR from '../images/checklist-images/GoCEngNFrQR.png';
+import childTaxBenefitQR from '../images/checklist-images/childTaxBenefitQR.png';
+import driversLicenseQR from '../images/checklist-images/driversLicenseQR.png';
+import lawsQR from '../images/checklist-images/lawsQR.png';
+import rentHomeQR from '../images/checklist-images/rentHomeQR.png';
+import buyHomeQR from '../images/checklist-images/buyHomeQR.png';
+import homeLawsQR from '../images/checklist-images/homeLawsQR.png';
+import employeeLawsQR from '../images/checklist-images/employeeLawsQR.png';
+import familyDocQR from '../images/checklist-images/familyDocQR.png';
+import postSecondaryQR from '../images/checklist-images/postSecondaryQR.png';
+import mentalHealthSupportQR from '../images/checklist-images/mentalHealthSupportQR.png';
+import IRCCNewcomersQR from '../images/checklist-images/IRCCNewcomersQR.png';
+import GOCNewcomersQR from '../images/checklist-images/GOCNewcomersQR.png';
+import newcomersYYCQR from '../images/checklist-images/newcomersYYCQR.png';
 
 function Checklist() {
     const [showModal, setShowModal] = useState(false);
@@ -153,7 +158,10 @@ function Checklist() {
                                 {item.title === 'Get Credentials Accredited' && (
                                     <>
                                         <p><strong>If you have educational or professional qualifications from outside Canada, you should get your credentials accredited.</strong></p>
-                                        <p><Button className="button" onClick={() => openWebsite("https://www.jobbank.gc.ca/findajob/newcomers#sectionTitle2")}>Open Government of Canada's Job Bank Website</Button></p>
+                                        <div className="in-line">
+                                            <p><Button className="button" onClick={() => openWebsite("https://www.jobbank.gc.ca/findajob/newcomers#sectionTitle2")}>Open Government of Canada's Job Bank Website</Button></p>
+                                            <p><Button className="button" onClick={() => handleShow(qualificationsQR)}>Website QR Code</Button></p>
+                                        </div>
                                         <p>The process ensures your education or work experience is recognized by Canadian institutions and employers. It will help you significantly when you are seeking employment.</p>
                                         <p>The provided link above allows you to check if your credentials need to be accredited in Canada.</p>
                                     </>
@@ -189,7 +197,10 @@ function Checklist() {
                                 {item.title === 'Improve your English/French' && (
                                     <>
                                         <p><strong>Enroll in government-funded language programs available for newcomers, such as LINC (Language Instruction for Newcomers to Canada).</strong></p>
-                                        <p><Button className="button" onClick={() => openWebsite("https://www.immigrantservicescalgary.ca/clarcregistration/")}>Open Immigrant Services Calgary Website</Button></p>
+                                        <div className="in-line">
+                                            <p><Button className="button" onClick={() => openWebsite("https://www.immigrantservicescalgary.ca/clarcregistration/")}>Open Immigrant Services Calgary Website</Button></p>
+                                            <p><Button className="button" onClick={() => handleShow(CLARCQR)}>Website QR Code</Button></p>
+                                        </div>
                                         <p>Canada has two official languages: English and French. English is the most commonly spoken language in most provinces and territories. These courses help build necessary language skills for work and daily life in Canada.</p>
                                         <p><strong>OR complete a language test & get a certificate.</strong></p>
                                         <div className="in-line">
@@ -248,12 +259,12 @@ function Checklist() {
                                         <p><strong>Renting a home in Canada information</strong></p>
                                         <div className="in-line">
                                             <p><Button className="button" onClick={() => window.open("https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/new-life-canada/housing/renting.html")}>Open Government of Canada Website</Button></p>
-                                            <p><Button className="button" onClick={() => handleShow(buyHomeQR)}>Website QR Code</Button></p>
+                                            <p><Button className="button" onClick={() => handleShow(rentHomeQR)}>Website QR Code</Button></p>
                                         </div>
                                         <p><strong>Buying a home in Canada information</strong></p>
                                         <div className="in-line">
                                             <p><Button className="button" onClick={() => window.open("https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/new-life-canada/housing/buying.html")}>Open Government of Canada Website</Button></p>
-                                            <p><Button className="button" onClick={() => handleShow(rentHomeQR)}>Website QR Code</Button></p>
+                                            <p><Button className="button" onClick={() => handleShow(buyHomeQR)}>Website QR Code</Button></p>
                                         </div>
                                         <p><strong>Understand your options for renting or buying a home and know your rights as a tenant.</strong></p>
                                         <div className="in-line">
@@ -326,13 +337,22 @@ function Checklist() {
             <br />
             <h3>SUMMARY WEBSITES</h3>
             <br />
-            <p><Button className="button" onClick={() => openWebsite("https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants.html")}>Open IRCC's "Newcomers to Canada" Website</Button></p>
+            <div className="in-line">
+                <p><Button className="button" onClick={() => openWebsite("https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants.html")}>Open IRCC's "Newcomers to Canada" Website</Button></p>
+                <p><Button className="button" onClick={() => handleShow(IRCCNewcomersQR)}>Website QR Code</Button></p>
+            </div>
             <p>This website contains all information and services the IRCC provides for newcomers to Canada.</p>
             <br />
-            <p><Button className="button" onClick={() => openWebsite("https://www.canada.ca/en/immigration-refugees-citizenship/campaigns/newcomers.html")}>Open Government of Canada's "Newcomer Services" Website</Button></p>
+            <div className="in-line">
+                <p><Button className="button" onClick={() => openWebsite("https://www.canada.ca/en/immigration-refugees-citizenship/campaigns/newcomers.html")}>Open Government of Canada's "Newcomer Services" Website</Button></p>
+                <p><Button className="button" onClick={() => handleShow(GOCNewcomersQR)}>Website QR Code</Button></p>
+            </div>
             <p>This website contains similar information to the link above but is a more general summary for newcomers to Canada, created by the Governemnt of Canada.</p>
             <br />
-            <p><Button className="button" onClick={() => openWebsite("https://www.centrefornewcomers.ca/")}>Open Center for Newcomers Website</Button></p>
+            <div className="in-line">
+                <p><Button className="button" onClick={() => openWebsite("https://www.centrefornewcomers.ca/")}>Open Center for Newcomers Calgary Website</Button></p>
+                <p><Button className="button" onClick={() => handleShow(newcomersYYCQR)}>Website QR Code</Button></p>
+            </div>
             <p>This website contains all information and services relating to newcomers in Calgary.</p>
             <Modal show={showModal} onHide={handleClose}>
                 <Modal.Header closeButton>
