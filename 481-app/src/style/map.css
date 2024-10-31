@@ -5,7 +5,6 @@
 
 .Map {
     padding: 20px;
-    position: relative; /* Enable relative positioning */
 }
 
 .Map h1 {
@@ -16,12 +15,6 @@
 .category-buttons {
     display: flex;
     justify-content: space-around;
-    padding: 10px 0; /* Adds padding to the top and bottom */
-    position: absolute; /* Use absolute positioning */
-    top: 0; /* Aligns to the top */
-    right: 20px; /* Adds some space from the right */
-    left: 20px; /* Adds some space from the left for better centering */
-    z-index: 10; /* Brings buttons to the front */
 }
 
 .button {
@@ -37,14 +30,14 @@
     background-color: var(--red);
     color: var(--white);
 }
-
+  
 .map-container {
     border: 1px solid #ddd;
     height: 600px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 60px; /* Space to ensure map doesn't overlap with buttons */
+    margin-bottom: 16px;
     background-color: #f9f9f9;
     overflow: hidden;
 }
