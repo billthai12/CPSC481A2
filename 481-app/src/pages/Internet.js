@@ -1,7 +1,5 @@
 // src/pages/InternetPhonePlanPage.js
 import React from 'react';
-import Header from '../components/Header'; // Import the Header component
-
 
 function Internet() {
     return (
