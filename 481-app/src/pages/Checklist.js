@@ -27,6 +27,7 @@ import mentalHealthSupportQR from '../images/checklist-images/mentalHealthSuppor
 import IRCCNewcomersQR from '../images/checklist-images/IRCCNewcomersQR.png';
 import GOCNewcomersQR from '../images/checklist-images/GOCNewcomersQR.png';
 import newcomersYYCQR from '../images/checklist-images/newcomersYYCQR.png';
+import NavigationBar from '../components/NavigationBar';
 
 function Checklist() {
     const [showModal, setShowModal] = useState(false);
@@ -89,6 +90,8 @@ function Checklist() {
     };
 
     return (
+        <>
+        <NavigationBar/>
         <div className="Checklist">
             <h1>Newcomer's To-Do List</h1>
             <br />
@@ -378,7 +381,9 @@ function Checklist() {
                 </Modal.Body>
             </Modal>
         </div>
+        </>
     );
 }
+
 
 export default Checklist;

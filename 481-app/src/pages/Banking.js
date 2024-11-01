@@ -8,6 +8,7 @@ import cibcLogo from '../images/cibc.png';
 import atbLogo from '../images/atb.png';
 import { Card, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import NavigationBar from '../components/NavigationBar';
 
 function Banking() {
     const [sortCriteria, setSortCriteria] = useState('distanceLowToHigh');
@@ -52,6 +53,8 @@ function Banking() {
     };
 
     return (
+        <>
+        <NavigationBar/>
         <div className="Banking">
             <h1>Banking</h1>
 
@@ -93,6 +96,7 @@ function Banking() {
                 ))}
             </div>
         </div>
+        </>
     );
 }
 

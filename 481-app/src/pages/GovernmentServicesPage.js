@@ -10,8 +10,8 @@ import {
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import Header from '../components/Header';
 import './GovernmentServicesPage.css';
+import NavigationBar from '../components/NavigationBar';
 
 function GovernmentServicesPage() {
     const navigate = useNavigate();
@@ -29,6 +29,8 @@ function GovernmentServicesPage() {
     };
 
     return (
+        <>
+        <NavigationBar/>
         <div className="page-container">
             <div className="title-container">
                 <h1 className="title">Government Services</h1>
@@ -154,6 +156,7 @@ function GovernmentServicesPage() {
                 </Button>
             </footer>
         </div>
+        </>
     );
 }
 

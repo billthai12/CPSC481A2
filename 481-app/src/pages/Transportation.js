@@ -6,6 +6,7 @@ import '../style/transportation.css';
 import uberQR from '../images/uberQR.png';
 import lyftQR from '../images/lyftQR.png'; 
 import communautoQR from '../images/communautoQR.png'; 
+import NavigationBar from '../components/NavigationBar';
 
 function Transportation() {
     const [sortCriteria, setSortCriteria] = useState('none');
@@ -55,6 +56,8 @@ function Transportation() {
     };
 
     return (
+        <>
+        <NavigationBar/>
         <div className="Transportation">
             <h1>Transportation</h1>
 
@@ -160,6 +163,7 @@ function Transportation() {
                 </Modal.Footer>
             </Modal>
         </div>
+        </>
     );
 }
 
