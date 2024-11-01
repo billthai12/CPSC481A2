@@ -10,6 +10,8 @@ import Map from '../images/map.png';
 import Transportation from '../images/transportation.png';
 import Government from '../images/government.png';
 import Emergency from '../images/emergency.png';
+import Resources from '../images/resources.png';
+import Shopping from '../images/shopping.png';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -89,6 +91,24 @@ function HomePage() {
               <Card.Body className="card-body">
                 <Card.Title>Government Services Information</Card.Title>
                 <Button variant="success" onClick={() => navigate('/government-services')}>Select</Button>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col xs={12} sm={6} md={4} lg={3} className="h-100">
+          <Card style={{ width: '18rem', height: '18rem' }}>
+              <Card.Img variant="top" src={Resources} />
+              <Card.Body className="card-body">
+                <Card.Title>Support</Card.Title>
+                <Button variant="success" onClick={() => navigate('/resources')}>Select</Button>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col xs={12} sm={6} md={4} lg={3} className="h-100">
+          <Card style={{ width: '18rem', height: '18rem' }}>
+              <Card.Img variant="top" src={Shopping} />
+              <Card.Body className="card-body">
+                <Card.Title>Shopping</Card.Title>
+                <Button variant="success" onClick={() => navigate('/shopping')}>Select</Button>
               </Card.Body>
             </Card>
           </Col>
