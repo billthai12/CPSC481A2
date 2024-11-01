@@ -30,7 +30,6 @@ function GovernmentServicesPage() {
 
     return (
         <div className="page-container">
-            <Header />
             <div className="title-container">
                 <h1 className="title">Government Services</h1>
             </div>
