@@ -10,7 +10,6 @@ import {
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import Header from '../components/Header';
 import './GovernmentServicesPage.css';
 
 function GovernmentServicesPage() {
