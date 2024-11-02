@@ -11,7 +11,7 @@ import LanguagePage from './pages/LanguagePage';
 import EmergencyServices from './pages/EmergencyServices';
 import Checklist from './pages/Checklist';
 import Map from './pages/Map';
-import Internet from './pages/Internet';
+import InternetPhonePlanPage from './pages/InternetPhonePlanPage';
 import GovernmentServicesPage from './pages/GovernmentServicesPage';
 import Resources from './pages/Resources';
 import Shopping from './pages/Shopping';
@@ -35,7 +35,7 @@ function App() {
           <Route path="/emergencyservices" element={<EmergencyServices />} />
           <Route path="/checklist" element={<Checklist />} />
           <Route path="/map" element={<Map />} />
-          <Route path="/internet" element={<Internet />} />
+          <Route path="/internet" element={<InternetPhonePlanPage />} />
           <Route path="/government-services" element={<GovernmentServicesPage />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/shopping" element={<Shopping />} />
@@ -46,3 +46,4 @@ function App() {
 }
 
 export default App;
+

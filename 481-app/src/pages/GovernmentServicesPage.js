@@ -1,3 +1,4 @@
+// GovernmentServicesPage.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -10,28 +11,25 @@ import {
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import './GovernmentServicesPage.css';
-import NavigationBar from '../components/NavigationBar';
+import Header from '../components/Header';
+import Footer from '../components/Footer'; // Import the new Footer component
+import '../style/GovernmentServicesPage.css';
 
 function GovernmentServicesPage() {
     const navigate = useNavigate();
     const [openMapDialog, setOpenMapDialog] = useState(false);
 
-    const handleEndClick = () => navigate('/');
-    const handleHomeClick = () => navigate('/home');
-    const handleBackClick = () => navigate(-1);
-
     const handleMapOpen = (url) => {
         window.open(url, 'Popup', 'width=800,height=600,menubar=no,toolbar=no,location=no,status=no');
     };
+    
     const openPopup = (url) => {
         window.open(url, 'Popup', 'width=800,height=600,menubar=no,toolbar=no,location=no,status=no');
     };
 
     return (
-        <>
-        <NavigationBar/>
         <div className="page-container">
+            <Header />
             <div className="title-container">
                 <h1 className="title">Government Services</h1>
             </div>
@@ -59,8 +57,8 @@ function GovernmentServicesPage() {
                             </Button>
                         </Typography>
                         <IconButton
-                                onClick={() => openPopup("https://www.google.ca/maps/preview")}
-                                color="primary"
+                            onClick={() => openPopup("https://www.google.ca/maps/preview")}
+                            color="primary"
                             aria-label="Open Map"
                             style={{ marginLeft: 'auto' }}
                         >
@@ -94,8 +92,8 @@ function GovernmentServicesPage() {
                             </Button>
                         </Typography>
                         <IconButton
-                                onClick={() => openPopup("https://www.google.ca/maps/preview")}
-                                color="primary"
+                            onClick={() => openPopup("https://www.google.ca/maps/preview")}
+                            color="primary"
                             aria-label="Open Map"
                             style={{ marginLeft: 'auto' }}
                         >
@@ -121,8 +119,8 @@ function GovernmentServicesPage() {
                             </Button>
                         </Typography>
                         <IconButton
-                                onClick={() => openPopup("https://www.google.ca/maps/preview")}
-                                color="primary"
+                            onClick={() => openPopup("https://www.google.ca/maps/preview")}
+                            color="primary"
                             aria-label="Open Map"
                             style={{ marginLeft: 'auto' }}
                         >
@@ -132,31 +130,8 @@ function GovernmentServicesPage() {
                 </Accordion>
 
             </div>
-            <footer className="footer-bar">
-                <Button 
-                    onClick={handleEndClick} 
-                    variant="contained" 
-                    sx={{ backgroundColor: '#282c34', color: 'white', '&:hover': { backgroundColor: '#3a3f47' } }}
-                >
-                    End
-                </Button>
-                <Button 
-                    onClick={handleHomeClick} 
-                    variant="contained" 
-                    sx={{ backgroundColor: '#282c34', color: 'white', '&:hover': { backgroundColor: '#3a3f47' }}}
-                >
-                    Home
-                </Button>
-                <Button 
-                    onClick={handleBackClick} 
-                    variant="contained" 
-                    sx={{ backgroundColor: '#282c34', color: 'white', '&:hover': { backgroundColor: '#3a3f47' }}}
-                >
-                    Back
-                </Button>
-            </footer>
+            <Footer /> {/* Use the new Footer component here */}
         </div>
-        </>
     );
 }
 
