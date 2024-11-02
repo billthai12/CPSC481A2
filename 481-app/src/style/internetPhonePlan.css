@@ -7,8 +7,10 @@
     --border-color: #ced4da;
 }
 
-.InternetPhonePlan {
-    padding: 20px;
+.InternetPhonePlan h1 {
+    font-size: 2rem;
+    color: var(--text-color);
+    margin-bottom: 20px;
 }
 
 .InternetPhonePlan h1 {
@@ -97,8 +99,8 @@
 }
 
 .action-buttons button {
-    font-size: 16px; /* Slightly smaller font */
-    padding: 4px; /* Smaller padding */
+    font-size: 18px;
+    padding: 5px;
     cursor: pointer;
     background-color: var(--button-color);
     color: white;
@@ -109,6 +111,14 @@
 
 .action-buttons button:hover {
     background-color: var(--button-hover-color);
+}
+
+.star-rating .filled {
+    color: gold;
+}
+
+.star-rating .empty {
+    color: lightgray;
 }
 
 /* Sort container for sorting plans */
@@ -138,20 +148,8 @@
     border-color: var(--button-color);
     outline: none;
 }
-.star-rating {
-    display: flex;
-    justify-content: center; /* Center the stars */
-    margin: 10px 0; /* Add some space above and below */
-}
 
-.star-rating span {
-    font-size: 20px; /* Size of the stars */
-    color: gold; /* Color for filled stars */
-}
 
-.star-rating .empty {
-    color: lightgray; /* Color for empty stars */
-}
 
 
 .provider-phone {
