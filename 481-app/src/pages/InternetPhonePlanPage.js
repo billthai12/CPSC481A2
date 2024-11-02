@@ -8,7 +8,7 @@ import rogersLogo from '../images/rogers.png';
 import freedomLogo from '../images/freedom.png';
 import fidoLogo from '../images/fido.png';
 import koodoLogo from '../images/koodo.png';
-import Header from '../components/Header';
+import NavigationBar from '../components/NavigationBar';
 
 function InternetPhonePlanPage() {
     const providers = [
@@ -22,7 +22,7 @@ function InternetPhonePlanPage() {
 
     return (
         <div>
-            <Header />
+    <NavigationBar/>
             <Container className="text-center mt-4">
                 <h1>Internet and Phone Plans</h1>
 

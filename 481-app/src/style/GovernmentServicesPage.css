@@ -23,6 +23,17 @@
     margin: 20px auto;
     flex: 1;
 }
+/* GovernmentServicesPage.css */
+
+.accordion-container ul {
+    padding-left: 20px; /* Add some left padding to move the list away from the edge */
+    margin: 0; /* Reset default margin */
+}
+
+.accordion-container li {
+    list-style-position: outside; /* Ensure bullets are outside */
+    text-align: left; /* Align text to the left */
+}
 
 .footer-bar {
     display: flex;
