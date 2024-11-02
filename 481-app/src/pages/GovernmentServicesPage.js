@@ -39,7 +39,8 @@ const servicesData = [
                     Learn more about Service Canada
                 </Button>
             </>
-        )
+        ),
+        mapUrl: "https://www.google.com/maps?q=Service+Canada" // Replace with actual address
     },
     {
         title: 'Immigration',
@@ -71,7 +72,8 @@ const servicesData = [
                     Learn more about Immigration services
                 </Button>
             </>
-        )
+        ),
+        mapUrl: "https://www.google.com/maps?q=Immigration" // Replace with actual address
     },
     {
         title: 'Legal Services',
@@ -95,21 +97,22 @@ const servicesData = [
                     Community Legal Guidance
                 </Button>
             </>
-        )
+        ),
+        mapUrl: "https://www.google.com/maps?q=Legal+Services" // Replace with actual address
     }
 ];
 
-const ServiceAccordion = ({ title, description, onMapOpen }) => (
+const ServiceAccordion = ({ title, description, mapUrl }) => (
     <Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography variant="h6" style={{ fontWeight: 'bold' }}>{title}</Typography> {/* Bold title */}
+            <Typography variant="h6" style={{ fontWeight: 'bold' }}>{title}</Typography>
         </AccordionSummary>
         <AccordionDetails style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
             <Typography style={{ flexGrow: 1 }}>
                 {description}
             </Typography>
             <IconButton
-                onClick={onMapOpen}
+                onClick={() => window.open(mapUrl, 'Popup', 'width=800,height=600,menubar=no,toolbar=no,location=no,status=no')}
                 color="primary"
                 aria-label="Open Map"
                 style={{ marginLeft: 'auto' }}
@@ -121,10 +124,6 @@ const ServiceAccordion = ({ title, description, onMapOpen }) => (
 );
 
 function GovernmentServicesPage() {
-    const handleMapOpen = () => {
-        window.open("https://www.google.ca/maps/preview", 'Popup', 'width=800,height=600,menubar=no,toolbar=no,location=no,status=no');
-    };
-
     return (
         <div className="page-container">
             <NavigationBar />
@@ -137,7 +136,7 @@ function GovernmentServicesPage() {
                         key={service.title}
                         title={service.title}
                         description={service.description}
-                        onMapOpen={handleMapOpen}
+                        mapUrl={service.mapUrl}
                     />
                 ))}
             </div>
