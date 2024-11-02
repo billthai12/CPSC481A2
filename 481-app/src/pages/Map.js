@@ -8,6 +8,7 @@ import attractionsImage from '../images/attractions.png';
 import groceryImage from '../images/grocery.png';
 import libraryImage from '../images/library.png';
 import communityCentersImage from '../images/communitycenters.png';
+import NavigationBar from '../components/NavigationBar';
 
 function Map() {
     const [selectedCategory, setSelectedCategory] = useState('My Location');
@@ -39,6 +40,8 @@ function Map() {
     };
 
     return (
+        <>
+        <NavigationBar/>
         <div className="Map">
             <h1>Map</h1>
             <br />
@@ -131,6 +134,7 @@ function Map() {
                 </Modal.Body>
             </Modal>
       </div>
+      </>
     );
 }
 

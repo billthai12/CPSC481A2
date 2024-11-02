@@ -9,6 +9,7 @@
 
 .Banking {
     padding: 20px;
+    position: relative;
 }
 
 .Banking h1 {
@@ -18,7 +19,7 @@
 
 .banks-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
     justify-items: center;
 }
@@ -78,13 +79,17 @@
 
 .sort-container {
     position: absolute;
-    top: 160px;
-    right: 20px;
+    top: 10px;
+    right: 10px;
     z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px;
 }
 
 .sort-container label {
-    margin-right: 10px;
+    margin: 0;
 }
 
 .sort-container select {

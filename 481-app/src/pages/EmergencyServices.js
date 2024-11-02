@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import '../style/emergency.css'; 
 import CoCQR from '../images/emergency-coc-QR.png';
+import NavigationBar from '../components/NavigationBar';
 
 function EmergencyServices() {
     const [showModal, setShowModal] = useState(false);
@@ -43,6 +44,8 @@ function EmergencyServices() {
     };
 
     return (
+        <>
+        <NavigationBar/>
         <div className="EmergencyServices">
             <h1>Emergency Services</h1>
             <br />
@@ -97,6 +100,7 @@ function EmergencyServices() {
                 </Modal.Body>
             </Modal>
         </div>
+        </>
     );
 }
 

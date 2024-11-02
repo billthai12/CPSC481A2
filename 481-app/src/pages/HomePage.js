@@ -45,7 +45,7 @@ function HomePage() {
               <Card.Img variant="top" src={Map} />
               <Card.Body className="card-body">
                 <Card.Title>View Map of Calgary</Card.Title>
-                <Button variant="success" onClick={() => navigate('/')}>Select</Button>
+                <Button variant="success" onClick={() => navigate('/map')}>Select</Button>
               </Card.Body>
             </Card>
           </Col>
@@ -81,7 +81,7 @@ function HomePage() {
               <Card.Img variant="top" src={Internet} />
               <Card.Body className="card-body">
                 <Card.Title>Internet and Cellular Information</Card.Title>
-                <Button variant="success" onClick={() => navigate('/')}>Select</Button>
+                <Button variant="success" onClick={() => navigate('/internet')}>Select</Button>
               </Card.Body>
             </Card>
           </Col>
