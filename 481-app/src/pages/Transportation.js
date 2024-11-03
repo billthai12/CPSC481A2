@@ -59,15 +59,17 @@ function Transportation() {
         <>
         <NavigationBar/>
         <div className="Transportation">
-            <h1>Transportation</h1>
-
-            <div className="sort-container">
-                <label htmlFor="sort">Sort by Price:</label>
-                <select id="sort" value={sortCriteria} onChange={handleSortChange}>
-                    <option value="lowToHigh">Low to High</option>
-                    <option value="highToLow">High to Low</option>
-                </select>
+            <div className="header-container">
+                <h1>Transportation</h1>
+                <div className="sort-container">
+                    <label htmlFor="sort">Sort by Price:</label>
+                    <select id="sort" value={sortCriteria} onChange={handleSortChange}>
+                        <option value="lowToHigh">Low to High</option>
+                        <option value="highToLow">High to Low</option>
+                    </select>
+                </div>
             </div>
+
 
             <div className="accordion-container">
                 <Accordion defaultActiveKey="2">
