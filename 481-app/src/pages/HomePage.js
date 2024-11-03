@@ -98,7 +98,7 @@ function HomePage() {
           <Card style={{ width: '18rem', height: '18rem' }}>
               <Card.Img variant="top" src={Resources} />
               <Card.Body className="card-body">
-                <Card.Title>Support</Card.Title>
+                <Card.Title>Resources</Card.Title>
                 <Button variant="success" onClick={() => navigate('/resources')}>Select</Button>
               </Card.Body>
             </Card>
