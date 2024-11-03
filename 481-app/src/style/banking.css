@@ -1,4 +1,12 @@
 :root {
+    --main-color: #c8102e;
+    --white-color: #ffffff;
+    --grey-light: #f8f9fa;
+    --dark-grey: #333333;
+    --medium-grey: #666666;
+    --hover-background: var(--main-color);
+    --hover-text: var(--white-color);
+
     --background-color: #f8f9fa;
     --hover-background-color: #f8e2de;
     --button-color: #007bff;
@@ -12,19 +20,61 @@
     position: relative;
 }
 
-.Banking h1 {
+.Banking .header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
     margin-bottom: 20px;
+}
+
+.Banking .header-container h1 {
+    flex: 1;
+    text-align: center;
+    margin: 0;
     font-size: 2rem;
 }
 
-.banks-container {
+.Banking .sort-container {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px;
+    z-index: 10;
+}
+
+.Banking .sort-container label {
+    margin: 0;
+    color: var(--text-color);
+}
+
+.Banking .sort-container select {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: var(--white-color);
+    color: var(--text-color);
+    transition: border-color 0.3s ease;
+}
+
+.Banking .sort-container select:focus {
+    border-color: var(--button-color);
+    outline: none;
+}
+
+.Banking .banks-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
     justify-items: center;
 }
 
-.bank-card {
+.Banking .bank-card {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,12 +85,12 @@
     position: relative;
 }
 
-.bank-card:hover {
+.Banking .bank-card:hover {
     background-color: var(--hover-background-color);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-.bank-link {
+.Banking .bank-link {
     display: block;
     text-decoration: none;
     color: inherit;
@@ -49,20 +99,20 @@
     border-radius: 8px;
 }
 
-.bank-logo {
+.Banking .bank-logo {
     width: 100px;
     height: auto;
     margin-bottom: 10px;
 }
 
-.action-buttons {
+.Banking .action-buttons {
     display: flex;
     justify-content: center;
     gap: 10px;
     margin-top: 10px;
 }
 
-.action-buttons button {
+.Banking .action-buttons button {
     font-size: 18px;
     padding: 5px;
     cursor: pointer;
@@ -73,36 +123,6 @@
     transition: background-color 0.3s ease;
 }
 
-.action-buttons button:hover {
+.Banking .action-buttons button:hover {
     background-color: var(--button-hover-color);
-}
-
-.sort-container {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 5px;
-}
-
-.sort-container label {
-    margin: 0;
-}
-
-.sort-container select {
-    padding: 8px 12px;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    font-size: 16px;
-    background-color: #ffffff;
-    color: var(--text-color);
-    transition: border-color 0.3s ease;
-}
-
-.sort-container select:focus {
-    border-color: var(--button-color);
-    outline: none;
 }

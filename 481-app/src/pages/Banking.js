@@ -56,14 +56,15 @@ function Banking() {
         <>
         <NavigationBar/>
         <div className="Banking">
-            <h1>Banking</h1>
-
-            <div className="sort-container">
-                <label htmlFor="sort">Sort by:</label>
-                <select id="sort" value={sortCriteria} onChange={handleSortChange}>
-                    <option value="distanceLowToHigh">Distance</option>
-                    <option value="ratingHighToLow">Rating</option>
-                </select>
+            <div className="header-container">
+                <h1>Banking</h1>
+                <div className="sort-container">
+                    <label htmlFor="sort">Sort by:</label>
+                    <select id="sort" value={sortCriteria} onChange={handleSortChange}>
+                        <option value="distanceLowToHigh">Distance</option>
+                        <option value="ratingHighToLow">Rating</option>
+                    </select>
+                </div>
             </div>
 
             <div className="banks-container">
