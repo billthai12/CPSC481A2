@@ -34,7 +34,7 @@ function HomePage() {
           <Card style={{ width: '18rem', height: '18rem' }}>
               <Card.Img variant="top" src={Checklist} />
               <Card.Body className="card-body">
-                <Card.Title>Important Tasks Checklist</Card.Title>
+                <Card.Title>Newcomer's To-Do List</Card.Title>
                 <Button variant="success" onClick={() => navigate('/checklist')}>Select</Button>
               </Card.Body>
             </Card>
