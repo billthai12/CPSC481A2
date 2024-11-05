@@ -23,90 +23,93 @@ function HomePage() {
   return (
     <>
       <div className='HomePageTitle'>
-      <Button className="BackButton" variant="danger" size="lg" onClick={() => navigate('/')}>Back to Language Select</Button>
+        <Button className="BackButton" variant="danger" size="lg" onClick={() => navigate('/')}>Back to Language Select</Button>
         <h1>Home Page</h1>
       </div>
 
       <Container className="ChoicesContainer">
-        <Row className="g-4"> {/* g-4 adds spacing between cards */}
-        
-        <Col xs={12} sm={6} md={4} lg={3} className="h-100">
-          <Card style={{ width: '18rem', height: '18rem' }}>
+        {/* First Row with 5 Cards */}
+        <Row className="g-4 justify-content-center">
+          <Col xs={12} sm={6} md={2} className="d-flex justify-content-center">
+            <Card style={{ width: '18rem', height: '18rem' }}>
               <Card.Img variant="top" src={Checklist} />
-              <Card.Body className="card-body">
+              <Card.Body>
                 <Card.Title>Newcomer's To-Do List</Card.Title>
                 <Button variant="success" onClick={() => navigate('/checklist')}>Select</Button>
               </Card.Body>
             </Card>
           </Col>
-
-          <Col xs={12} sm={6} md={4} lg={3} className="h-100">
-          <Card style={{ width: '18rem', height: '18rem' }}>
+          <Col xs={12} sm={6} md={2} className="d-flex justify-content-center">
+            <Card style={{ width: '18rem', height: '18rem' }}>
               <Card.Img variant="top" src={Map} />
-              <Card.Body className="card-body">
+              <Card.Body>
                 <Card.Title>View Map of Calgary</Card.Title>
                 <Button variant="success" onClick={() => navigate('/map')}>Select</Button>
               </Card.Body>
             </Card>
           </Col>
-          <Col xs={12} sm={6} md={4} lg={3} className="h-100">
-          <Card style={{ width: '18rem', height: '18rem' }}>
+          <Col xs={12} sm={6} md={2} className="d-flex justify-content-center">
+            <Card style={{ width: '18rem', height: '18rem' }}>
               <Card.Img variant="top" src={Emergency} />
-              <Card.Body className="card-body">
+              <Card.Body>
                 <Card.Title>Emergency Services Information</Card.Title>
                 <Button variant="success" onClick={() => navigate('/emergencyservices')}>Select</Button>
               </Card.Body>
             </Card>
           </Col>
-          <Col xs={12} sm={6} md={4} lg={3} className="h-100">
+          <Col xs={12} sm={6} md={2} className="d-flex justify-content-center">
             <Card style={{ width: '18rem', height: '18rem' }}>
               <Card.Img variant="top" src={Bank} />
-              <Card.Body className="card-body">
+              <Card.Body>
                 <Card.Title>Banking Information</Card.Title>
                 <Button variant="success" onClick={() => navigate('/banking')}>Select</Button>
               </Card.Body>
             </Card>
           </Col>
-          <Col xs={12} sm={6} md={4} lg={3} className="h-100">
-          <Card style={{ width: '18rem', height: '18rem' }}>
+          <Col xs={12} sm={6} md={2} className="d-flex justify-content-center">
+            <Card style={{ width: '18rem', height: '18rem' }}>
               <Card.Img variant="top" src={Transportation} />
-              <Card.Body className="card-body">
+              <Card.Body>
                 <Card.Title>Transportation Information</Card.Title>
                 <Button variant="success" onClick={() => navigate('/transportation')}>Select</Button>
               </Card.Body>
             </Card>
           </Col>
-          <Col xs={12} sm={6} md={4} lg={3} className="h-100">
-          <Card style={{ width: '18rem', height: '18rem' }}>
+        </Row>
+
+        {/* Second Row with 4 Cards and added spacing */}
+        <Row className="g-4 justify-content-center my-1">
+          <Col xs={12} sm={6} md={2} className="d-flex justify-content-center">
+            <Card style={{ width: '18rem', height: '18rem' }}>
               <Card.Img variant="top" src={Internet} />
-              <Card.Body className="card-body">
+              <Card.Body>
                 <Card.Title>Internet and Cellular Information</Card.Title>
                 <Button variant="success" onClick={() => navigate('/internet')}>Select</Button>
               </Card.Body>
             </Card>
           </Col>
-          <Col xs={12} sm={6} md={4} lg={3} className="h-100">
-          <Card style={{ width: '18rem', height: '18rem' }}>
+          <Col xs={12} sm={6} md={2} className="d-flex justify-content-center">
+            <Card style={{ width: '18rem', height: '18rem' }}>
               <Card.Img variant="top" src={Government} />
-              <Card.Body className="card-body">
+              <Card.Body>
                 <Card.Title>Government Services Information</Card.Title>
                 <Button variant="success" onClick={() => navigate('/government-services')}>Select</Button>
               </Card.Body>
             </Card>
           </Col>
-          <Col xs={12} sm={6} md={4} lg={3} className="h-100">
-          <Card style={{ width: '18rem', height: '18rem' }}>
+          <Col xs={12} sm={6} md={2} className="d-flex justify-content-center">
+            <Card style={{ width: '18rem', height: '18rem' }}>
               <Card.Img variant="top" src={Resources} />
-              <Card.Body className="card-body">
+              <Card.Body>
                 <Card.Title>Resources</Card.Title>
                 <Button variant="success" onClick={() => navigate('/resources')}>Select</Button>
               </Card.Body>
             </Card>
           </Col>
-          <Col xs={12} sm={6} md={4} lg={3} className="h-100">
-          <Card style={{ width: '18rem', height: '18rem' }}>
+          <Col xs={12} sm={6} md={2} className="d-flex justify-content-center">
+            <Card style={{ width: '18rem', height: '18rem' }}>
               <Card.Img variant="top" src={Shopping} />
-              <Card.Body className="card-body">
+              <Card.Body>
                 <Card.Title>Shopping</Card.Title>
                 <Button variant="success" onClick={() => navigate('/shopping')}>Select</Button>
               </Card.Body>
