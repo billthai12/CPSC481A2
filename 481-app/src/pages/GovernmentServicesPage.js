@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, Accordion, Card } from 'react-bootstrap';
+import Accordion from 'react-bootstrap/Accordion';
+import Button from 'react-bootstrap/Button';
 import NavigationBar from '../components/NavigationBar';
 import '../style/GovernmentServicesPage.css';
 
@@ -8,111 +9,101 @@ const servicesData = [
         title: 'Service Canada',
         description: (
             <>
-                <div style={{ marginBottom: '10px' }}> {}
-                    <strong>Service Canada provides a range of services and benefits for Canadians, including:</strong>
-                </div>
-                <ul style={{ listStylePosition: 'inside', marginBottom: '10px' }}> {}
+            <h5>Service Canada</h5>
+
+                <p><strong>Service Canada provides a range of services and benefits for Canadians:</strong></p>
+  
                     <li>Employment Insurance</li>
                     <li>Canada Pension Plan</li>
                     <li>Old Age Security</li>
                     <li>Social Insurance Number applications</li>
-                </ul>
-                For more information, you can visit the official website:
-                <br />
-                <Button
-                    variant="link"
-                    onClick={() => window.open("https://www.canada.ca/en/employment-social-development/corporate/portfolio/service-canada.html", 'Popup', 'width=800,height=600,menubar=no,toolbar=no,location=no,status=no')}
-                >
-                    Learn more about Service Canada
-                </Button>
+        
             </>
         ),
-        mapUrl: "https://www.google.com/maps?q=Service+Canada" 
+        learnMoreUrl: "https://www.canada.ca/en/employment-social-development/corporate/portfolio/service-canada.html",
+        mapUrl: "https://www.google.com/maps?q=Service+Canada",
     },
     {
         title: 'Immigration',
         description: (
             <>
-                <div style={{ marginBottom: '10px' }}> {}
-                    <strong>Immigration, Refugees and Citizenship Canada (IRCC) offers a range of services for those looking to travel, study, work, or immigrate to Canada. The key areas include:</strong>
-                </div>
-                <ul style={{ listStylePosition: 'inside', marginBottom: '10px' }}> {}
-                    <li>Travel: Apply for a visitor visa or electronic travel authorization (eTA).</li>
-                    <li>Immigration: Apply for permanent residence through various programs.</li>
-                    <li>Work: Obtain or extend a work permit and learn about hiring foreign workers.</li>
-                    <li>Study: Apply for study permits and student work permits.</li>
-                    <li>Citizenship: Apply for Canadian citizenship and find information on citizenship tests.</li>
-                    <li>Refugees: Claim refugee protection and find support services.</li>
-                </ul>
-                For more information regarding these services, visit the official government website:
-                <br />
-                <Button
-                    variant="link"
-                    onClick={() => window.open("https://www.canada.ca/en/services/immigration-citizenship.html", 'Popup', 'width=800,height=600,menubar=no,toolbar=no,location=no,status=no')}
-                >
-                    Learn more about Immigration services
-                </Button>
+                        <h5>Immigration</h5>
+
+                <p><strong>Immigration, Refugees and Citizenship Canada (IRCC) offers:</strong></p>
+            
+                    <li>Visitor visa and electronic travel authorization (eTA)</li>
+                    <li>Permanent residence applications</li>
+                    <li>Work and study permits</li>
+                    <li>Citizenship applications</li>
+        
             </>
         ),
-        mapUrl: "https://www.google.com/maps?q=Immigration" 
+        learnMoreUrl: "https://www.canada.ca/en/services/immigration-citizenship.html",
+        mapUrl: "https://www.google.com/maps?q=Immigration",
     },
     {
         title: 'Legal Services',
         description: (
             <>
-                <div style={{ marginBottom: '10px' }}> {}
-                    <strong>Calgary Legal Guidance (CLG) offers free legal advice and resources to vulnerable Albertans, including those experiencing family violence, homelessness, or health issues. While we don't represent clients in court, our volunteer lawyers provide assistance in preparing for legal matters.</strong>
-                    <br />
-                    For more details, visit:
-                </div>
-                <Button
-                    variant="link"
-                    onClick={() => window.open("https://clg.ab.ca/", 'Popup', 'width=800,height=600,menubar=no,toolbar=no,location=no,status=no')}
-                >
-                    Community Legal Guidance
-                </Button>
+                        <h5>Legal Services</h5>
+                <p><strong>Calgary Legal Guidance (CLG) offers free legal advice to vulnerable Albertans:</strong></p>
+                <li>Free legal advice for vulnerable Albertans</li>
+<li>Supports low-income individuals, including those facing family violence or homelessness</li>
+<li>Volunteer lawyers assist with court prep</li>
+<li>Legal info on their website and www.cplea.ca</li>
+<li>Legal clinics for advice and immigration support</li>
+<li>Volunteer in-person lawyer roles</li>
+<li>Appointments Mon-Thurs, 9:00 am – 4:00 pm</li>
+<li>Donations support access to justice</li>
+
             </>
         ),
-        mapUrl: "https://www.google.com/maps?q=Legal+Services" 
+        learnMoreUrl: "https://clg.ab.ca/",
+        mapUrl: "https://www.google.com/maps?q=Legal+Services",
     }
 ];
 
-const ServiceAccordion = ({ title, description, mapUrl }) => (
-    <Accordion.Item eventKey={title}>
-        <Accordion.Header>{title}</Accordion.Header>
-        <Accordion.Body style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-            <div style={{ flexGrow: 1 }}>
-                {description}
-            </div>
-            <Button
-                variant="outline-primary"
-                onClick={() => window.open(mapUrl, 'Popup', 'width=800,height=600,menubar=no,toolbar=no,location=no,status=no')}
-                style={{ marginLeft: 'auto' }}
-            >
-                📍
-            </Button>
-        </Accordion.Body>
-    </Accordion.Item>
-);
-
 function GovernmentServicesPage() {
     return (
-        <div className="page-container">
+        <>
             <NavigationBar />
-            <div className="title-container">
-                <h1 className="title">Government Services</h1>
+            <div className="GovernmentServicesPage">
+                <div className="header-container">
+                    <h1>Government Services</h1>
+                </div>
+
+                <div className="accordion-container">
+                    <Accordion defaultActiveKey="0">
+                        {servicesData.map((service, index) => (
+                            <Accordion.Item eventKey={index.toString()} key={index}>
+                                <Accordion.Header>{service.title}</Accordion.Header>
+                                <Accordion.Body className="accordion-body">
+                                    <div className="description-section">
+                                        {service.description}
+                                    </div>
+                                    <div className="button-section">
+                                        <Button
+                                            variant="primary"
+                                            className="learn-more-btn"
+                                            onClick={() => window.open(service.learnMoreUrl, 'Popup', 'width=800,height=600,menubar=no,toolbar=no,location=no,status=no')}
+                                        >
+                                            Learn More
+                                        </Button>
+                                        <Button
+                                            variant="secondary"
+                                            className="map-btn"
+                                            onClick={() => window.open(service.mapUrl, 'Popup', 'width=800,height=600,menubar=no,toolbar=no,location=no,status=no')}
+                                        >
+                                            View on Map 📍
+                                        </Button>
+                                    </div>
+                                </Accordion.Body>
+                            </Accordion.Item>
+                        ))}
+                    </Accordion>
+                </div>
             </div>
-            <Accordion defaultActiveKey="0" className="accordion-container">
-                {servicesData.map((service, index) => (
-                    <ServiceAccordion
-                        key={index}
-                        title={service.title}
-                        description={service.description}
-                        mapUrl={service.mapUrl}
-                    />
-                ))}
-            </Accordion>
-        </div>
+        </>
     );
 }
 
