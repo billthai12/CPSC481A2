@@ -5,7 +5,6 @@ import Modal from 'react-bootstrap/Modal';
 import '../style/transportation.css'; 
 import uberQR from '../images/uberQR.png';
 import lyftQR from '../images/lyftQR.png'; 
-import communautoQR from '../images/communautoQR.png'; 
 import NavigationBar from '../components/NavigationBar';
 
 function Transportation() {
