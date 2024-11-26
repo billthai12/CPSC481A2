@@ -6,12 +6,14 @@ import rogersLogo from '../images/rogers.png';
 import freedomLogo from '../images/freedom.png';
 import fidoLogo from '../images/fido.png';
 import koodoLogo from '../images/koodo.png';
-import { Card, Button } from 'react-bootstrap';
+import { Card, Button, Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavigationBar from '../components/NavigationBar';
 
 function InternetPhonePlanPage() {
     const [sortCriteria, setSortCriteria] = useState('priceLowToHigh');
+    const [showWarningModal, setShowWarningModal] = useState(false);
+    const [selectedProvider, setSelectedProvider] = useState(null);
 
     const providers = [
         { name: 'Bell', logo: bellLogo, website: 'https://www.bell.ca', rating: 4.5, priceRange: 40, phone: '1-800-668-6878', mapLocation: 'https://www.google.com/maps?q=Bell+stores+Calgary' },
@@ -32,8 +34,16 @@ function InternetPhonePlanPage() {
         return 0;
     });
 
-    const openProviderPopup = (url) => {
-        window.open(url, 'ProviderPopup', 'width=800,height=600,menubar=no,toolbar=no,location=no,status=no');
+    const handleWarningModal = (provider) => {
+        setSelectedProvider(provider);
+        setShowWarningModal(true);
+    };
+
+    const openProviderPopup = () => {
+        if (selectedProvider) {
+            window.open(selectedProvider.website, 'ProviderPopup', 'width=800,height=600,menubar=no,toolbar=no,location=no,status=no');
+            setShowWarningModal(false);
+        }
     };
 
     const openMapPopup = (providerName) => {
@@ -62,10 +72,10 @@ function InternetPhonePlanPage() {
                                 <a
                                     onClick={(e) => {
                                         e.preventDefault();
-                                        openProviderPopup(provider.website);
+                                        handleWarningModal(provider);
                                     }}
                                     className="provider-link"
-                                    href={provider.website}
+                                    href="#"
                                 >
                                     <Card.Img variant="top" src={provider.logo} alt={`${provider.name} logo`} className="provider-logo" />
                                     <Card.Title>{provider.name}</Card.Title>
@@ -81,13 +91,27 @@ function InternetPhonePlanPage() {
                                 </a>
                                 <div className="action-buttons">
                                     <Button variant="outline-primary" onClick={() => openMapPopup(provider.mapLocation)}>📍</Button>
-                                    <Button variant="outline-secondary" onClick={() => openProviderPopup(provider.website)}>🔗</Button>
+                                    <Button variant="outline-secondary" onClick={() => handleWarningModal(provider)}>View Website</Button>
                                 </div>
                             </Card.Body>
                         </Card>
                     ))}
                 </div>
             </div>
+
+            {/* Warning Modal */}
+            <Modal show={showWarningModal} onHide={() => setShowWarningModal(false)}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Caution</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <p>Please do not enter any personal or sensitive information on external websites.</p>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={() => setShowWarningModal(false)}>Go Back</Button>
+                    <Button variant="primary" onClick={openProviderPopup}>I Understand</Button>
+                </Modal.Footer>
+            </Modal>
         </>
     );
 }
