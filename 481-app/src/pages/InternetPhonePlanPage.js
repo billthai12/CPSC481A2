@@ -90,7 +90,7 @@ function InternetPhonePlanPage() {
                                     </Card.Text>
                                 </a>
                                 <div className="action-buttons">
-                                    <Button variant="outline-primary" onClick={() => openMapPopup(provider.mapLocation)}>📍</Button>
+                                    <Button variant="outline-primary" onClick={() => openMapPopup(provider.mapLocation)}>              View on Map 📍</Button>
                                     <Button variant="outline-secondary" onClick={() => handleWarningModal(provider)}>View Website</Button>
                                 </div>
                             </Card.Body>
