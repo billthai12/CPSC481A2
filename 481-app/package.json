@@ -11,8 +11,17 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.3.3",
+<<<<<<< HEAD
     "nth-check": "^2.1.1",
     "postcss": "^8.4.47",
+=======
+<<<<<<< Updated upstream
+=======
+    "bootstrap-icons": "^1.11.3",
+    "nth-check": "^2.1.1",
+    "postcss": "^8.4.47",
+>>>>>>> Stashed changes
+>>>>>>> bill
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.5",
     "react-dom": "^18.3.1",
