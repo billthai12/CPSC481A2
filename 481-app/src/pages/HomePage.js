@@ -13,6 +13,7 @@ import Emergency from '../images/emergency.png';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 function HomePage() {
   const navigate = useNavigate();
@@ -21,7 +22,11 @@ function HomePage() {
   return (
     <>
       <div className='HomePageTitle'>
-      <Button className="BackButton" variant="danger" size="lg" onClick={() => navigate('/')}>Back to Language Select</Button>
+      <Button 
+      className="BackButton"
+      variant="danger"
+      size="lg"
+      onClick={() => navigate('/')}><i class="bi bi-arrow-left"></i> Back</Button>
         <h1>Home Page</h1>
       </div>
 
