@@ -22,6 +22,8 @@ function Banking() {
     const [sortCriteria, setSortCriteria] = useState('distanceLowToHigh');
     const [showModal, setShowModal] = useState(false);
     const [currentImage, setCurrentImage] = useState('');
+    const [showWarningModal, setShowWarningModal] = useState(false);
+    const [selectedBank, setSelectedBank] = useState(null);
 
     const banks = [
         { name: 'TD', logo: tdLogo, website: 'https://www.td.com', distance: 2.3, rating: 4.5, image: tdQR },
@@ -48,12 +50,18 @@ function Banking() {
 
     const sortedBanks = [...banks].sort((a, b) => {
         if (sortCriteria === 'distanceLowToHigh') return a.distance - b.distance;
-        if (sortCriteria === 'ratingHighToLow') return b.rating - a.rating; // Sort from high to low for rating
+        if (sortCriteria === 'ratingHighToLow') return b.rating - a.rating;
         return 0;
     });
 
-    const openBankPopup = (url) => {
-        window.open(url, 'BankPopup', 'width=800,height=600,menubar=no,toolbar=no,location=no,status=no');
+    const handleWarningModal = (bank) => {
+        setSelectedBank(bank);
+        setShowWarningModal(true);
+    };
+
+    const openBankPopup = () => {
+        window.open(selectedBank.website, 'BankPopup', 'width=800,height=600,menubar=no,toolbar=no,location=no,status=no');
+        setShowWarningModal(false);
     };
 
     const openMapPopup = (bankName) => {
@@ -70,21 +78,6 @@ function Banking() {
         } else {
             alert('Geolocation is not supported by this browser.');
         }
-    };
-
-    const openImagePopup = (imageUrl) => {
-        const imagePopup = window.open('', 'ImagePopup', 'width=800,height=600,menubar=no,toolbar=no,location=no,status=no');
-        imagePopup.document.write(`
-            <html>
-            <head>
-                <title>Bank Branch Image</title>
-            </head>
-            <body style="margin:0; display:flex; justify-content:center; align-items:center; background-color:#f4f4f4;">
-                <img src="${imageUrl}" alt="Bank Branch" style="max-width:100%; max-height:100%;">
-            </body>
-            </html>
-        `);
-        imagePopup.document.close();
     };
 
     return (
@@ -106,28 +99,15 @@ function Banking() {
                     {sortedBanks.map((bank, index) => (
                         <Card key={index} className="bank-card">
                             <Card.Body>
-                                <a
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        openBankPopup(bank.website);
-                                    }}
-                                    className="bank-link"
-                                    href={bank.website}
-                                >
-                                    <Card.Img variant="top" src={bank.logo} alt={`${bank.name} logo`} className="bank-logo" />
-                                    <Card.Title>{bank.name}</Card.Title>
-                                    <Card.Text>
-                                        Distance: {bank.distance} km
-                                    </Card.Text>
-                                    <Card.Text>
-                                        Rating: {bank.rating} ⭐
-                                    </Card.Text>
-                                </a>
+                                <Card.Img variant="top" src={bank.logo} alt={`${bank.name} logo`} className="bank-logo" />
+                                <Card.Title>{bank.name}</Card.Title>
+                                <Card.Text>Distance: {bank.distance} km</Card.Text>
+                                <Card.Text>Rating: {bank.rating} ⭐</Card.Text>
                                 <div className="action-buttons">
                                     <Button variant="outline-primary" onClick={() => openMapPopup(bank.name)}>📍</Button>
-                                    <Button variant="outline-secondary" onClick={() => openBankPopup(bank.website)}>🔗</Button>
+                                    <Button variant="outline-secondary" onClick={() => handleWarningModal(bank)}>View Website</Button>
                                     <Button variant="outline-info" onClick={() => handleShow(bank.image)}>
-                                        <img src={phoneWebsiteLogo} alt="phone website logo" style={{ width: '20px', height: '20px' }} />
+                                        View on Mobile
                                     </Button>
                                 </div>
                             </Card.Body>
@@ -135,6 +115,18 @@ function Banking() {
                     ))}
                 </div>
             </div>
+            <Modal show={showWarningModal} onHide={() => setShowWarningModal(false)}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Caution</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <p>Please do not enter any personal or sensitive information on external websites. If you need to access anything confidential, please select "View on Mobile".</p>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={() => setShowWarningModal(false)}>Go Back</Button>
+                    <Button variant="primary" onClick={openBankPopup}>I Understand</Button>
+                </Modal.Footer>
+            </Modal>
             <Modal show={showModal} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>View Mobile Site</Modal.Title>
@@ -143,9 +135,7 @@ function Banking() {
                     <img src={currentImage} alt="view QR code" style={{ width: '100%' }} />
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
-                    </Button>
+                    <Button variant="secondary" onClick={handleClose}>Close</Button>
                 </Modal.Footer>
             </Modal>
         </>
