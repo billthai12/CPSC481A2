@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import '../style/shopping.css'; 
 //import '../style/transportation.css'; 
-import WalmartQR from '../images/shopping-images/WalmartQR.png';
+import WalmartQR from '../images/shopping-images/walmartQR.png';
 import HHQR from '../images/shopping-images/HHQR.png';
 import CTQR from '../images/shopping-images/CTQR.png';
 import NavigationBar from '../components/NavigationBar';
