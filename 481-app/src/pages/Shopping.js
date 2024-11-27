@@ -246,8 +246,8 @@ function Shopping() {
                                     <p>Walmart is a large retail store that offers a wide variety of products, including groceries, clothing, electronics, and household items, often at lower prices. 
                                       It provides a one-stop shopping experience, making it convenient for customers to find everything they need in one place.</p>
                                     <div className="in-line">
-                                        <p><Button className="button" onClick={() => handleWarningModal("https://www.walmart.ca/en")}>Open Website</Button></p>
-                                        <p><Button className="button" onClick={() => handleShow(WalmartQR)}>Website QR Code</Button></p>
+                                        <p><Button className="button" onClick={() => handleWarningModal("https://www.walmart.ca/en")}>View Website</Button></p>
+                                        <p><Button className="button" onClick={() => handleShow(WalmartQR)}>View on Mobile</Button></p>
                                     </div>
                                     <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup("walmart")}>📍</Button></p>
                                   </>
@@ -264,8 +264,8 @@ function Shopping() {
                                   <>
                                     <p>Home Hardware sells of various materials and tools for home improvement and construction projects.</p>
                                     <div className="in-line">
-                                        <p><Button className="button" onClick={() => handleWarningModal("https://www.homehardware.ca/en/")}>Open Website</Button></p>
-                                        <p><Button className="button" onClick={() => handleShow(HHQR)}>Website QR Code</Button></p>
+                                        <p><Button className="button" onClick={() => handleWarningModal("https://www.homehardware.ca/en/")}>View Website</Button></p>
+                                        <p><Button className="button" onClick={() => handleShow(HHQR)}>View on Mobile</Button></p>
                                     </div>
                                     <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup("home hardware")}>📍</Button></p>
                                   </>
@@ -274,8 +274,8 @@ function Shopping() {
                                   <>
                                     <p>Canadian Tire sells various products for home, vehicles, sports, and leisure.</p>
                                     <div className="in-line">
-                                        <p><Button className="button" onClick={() => handleWarningModal("https://www.canadiantire.ca/en.html")}>Open Website</Button></p>
-                                        <p><Button className="button" onClick={() => handleShow(CTQR)}>Website QR Code</Button></p>
+                                        <p><Button className="button" onClick={() => handleWarningModal("https://www.canadiantire.ca/en.html")}>View Website</Button></p>
+                                        <p><Button className="button" onClick={() => handleShow(CTQR)}>View on Mobile</Button></p>
                                     </div>
                                     <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup("canadian tire")}>📍</Button></p>
                                   </>
