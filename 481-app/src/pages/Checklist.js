@@ -31,6 +31,8 @@ import NavigationBar from '../components/NavigationBar';
 
 function Checklist() {
     const [showModal, setShowModal] = useState(false);
+    const [currentUrl, setCurrentUrl] = useState('');
+    const [showWarningModal, setShowWarningModal] = useState(false);
     const [currentImage, setCurrentImage] = useState('');
     const navigate = useNavigate();
 
@@ -69,10 +71,6 @@ function Checklist() {
         setCurrentImage('');
     };
 
-    const openWebsite = (url) => {
-        window.open(url, '_blank', "width=800,height=600")
-    };
-
     const openMapPopup = (location) => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
@@ -109,12 +107,18 @@ function Checklist() {
                                         <p><strong>IRCC Client Support Center: 1-888-242-2100</strong></p>
                                         <p>Monday to Friday, 8 a.m. to 4 p.m. (your local time)</p>
                                         <div className="in-line">
-                                            <p><Button className="button" onClick={() => openWebsite("https://www.canada.ca/en/immigration-refugees-citizenship/corporate/contact-ircc.html")}>Open IRCC's General Support Website</Button></p>
-                                            <p><Button className="button" onClick={() => handleShow(clientSupportQR)}>Website QR Code</Button></p>
+                                            <p><Button className="button" onClick={() => {
+                                                setCurrentUrl("https://www.canada.ca/en/immigration-refugees-citizenship/corporate/contact-ircc.html");
+                                                setShowWarningModal(true);
+                                            }}>View IRCC's General Support Website</Button></p>
+                                            <p><Button className="button" onClick={() => handleShow(clientSupportQR)}>View on Mobile</Button></p>
                                         </div>
                                         <div className="in-line">
-                                            <p><Button className="button" onClick={() => openWebsite("https://ircc.canada.ca/english/newcomers/services/index.asp")}>Open IRCC's Free Newcomer Services Website</Button></p>
-                                            <p><Button className="button" onClick={() => handleShow(newcomerServicesQR)}>Website QR Code</Button></p>
+                                            <p><Button className="button" onClick={() => {
+                                                setCurrentUrl("https://ircc.canada.ca/english/newcomers/services/index.asp");
+                                                setShowWarningModal(true);
+                                            }}>View IRCC's Free Newcomer Services Website</Button></p>
+                                            <p><Button className="button" onClick={() => handleShow(newcomerServicesQR)}>View on Mobile</Button></p>
                                         </div>
                                         <p>*Unfortunately the closest IRCC center is in <strong>Edmonton</strong>*</p>
                                     </>
@@ -123,8 +127,11 @@ function Checklist() {
                                     <>
                                         <p><strong>Read about the required documents for a Social Insurance Number (SIN) and apply at a registry.</strong></p>
                                         <div className="in-line">
-                                            <p><Button className="button" onClick={() => openWebsite("https://www.canada.ca/en/employment-social-development/services/sin/apply.html")}>Open Government of Canada Website</Button></p>
-                                            <p><Button className="button" onClick={() => handleShow(SINQR)}>Website QR Code</Button></p>
+                                            <p><Button className="button" onClick={() => {
+                                                setCurrentUrl("https://www.canada.ca/en/employment-social-development/services/sin/apply.html");
+                                                setShowWarningModal(true);
+                                            }}>View Government of Canada Website</Button></p>
+                                            <p><Button className="button" onClick={() => handleShow(SINQR)}>View on Mobile</Button></p>
                                             <p><Button className="button" onClick={() => openMapPopup("Registry")}>📍</Button></p>
                                         </div>
                                         <p>If you are a Canadian citizen, a permanent resident or a temporary resident, you need a Social Insurance Number (SIN) to work in Canada or to receive benefits and services from government programs. Children 12 years of age or older may apply for their SIN.</p>
@@ -134,8 +141,8 @@ function Checklist() {
                                     <>
                                         <p><strong>Read about the required documents for an Alberta Health Care Insurance Plan (AHCIP) and apply at a registry.</strong></p>
                                         <div className="in-line">
-                                            <p><Button className="button" onClick={() => openWebsite("https://www.alberta.ca/ahcip-how-to-apply")}>Open Alberta Website</Button></p>
-                                            <p><Button className="button" onClick={() => handleShow(AHCIPQR)}>Website QR Code</Button></p>
+                                            
+                                            <p><Button className="button" onClick={() => handleShow(AHCIPQR)}>View on Mobile</Button></p>
                                             <p><Button className="button" onClick={() => openMapPopup("Registry")}>📍</Button></p>
                                         </div>
                                         <p>All new and returning Alberta residents must register for Alberta Health Care Insurance Plan (AHCIP) coverage to receive insured hospital and physician services.</p>
@@ -144,7 +151,7 @@ function Checklist() {
                                 {item.title === 'Open Bank Account' && (
                                     <>
                                         <p><strong>The Banking page should provide you with details of the popular/closest banks in the area.</strong></p>
-                                        <p><Button className="button" onClick={() => navigate("/banking")}>Open Banking Page</Button></p>
+                                        <p><Button className="button" onClick={() => navigate("/banking")}>Go to Banking Page</Button></p>
                                         <p>Building your Canadian life begins by building good credit history. Lenders look at your credit history score to approve you for loans. The first step is to open a bank account, after which you can apply for a credit card to ease payments and build your credit history.</p>
                                     </>
                                 )}
@@ -153,14 +160,14 @@ function Checklist() {
                                         <p><strong>Your nearest library should provide you with temporary internet access and allow you to make phone calls.</strong></p>
                                         <p><Button className="button" onClick={() => openMapPopup("Public Library")}>📍</Button></p>
                                         <p>Another option is to <strong>find internet and phone plans for your home</strong>. The Internet and Cellular page should provide you with details of the popular/closest providers in the area.</p>
-                                        <p><Button className="button" onClick={() => navigate("/internet")}>Open Internet and Cellular Page</Button></p>
+                                        <p><Button className="button" onClick={() => navigate("/internet")}>Go to Internet and Cellular Page</Button></p>
                                         <p>Staying connected with loved ones, searching for job opportunities, and settling into your new life in Canada requires dependable mobile phone and internet services. Canada's phone and internet industries are newcomer friendly, but can be difficult to navigate as you begin a new life in a new country.</p>
                                     </>
                                 )}
                                 {item.title === 'Memorize Emergency Numbers' && (
                                     <>
                                         <p><strong>The Emergency Services page has a link to a list of all emergency and non-emergency numbers you should know.</strong></p>
-                                        <p><Button className="button" onClick={() => navigate("/emergencyservices")}>Open Emergency Services Page</Button></p>
+                                        <p><Button className="button" onClick={() => navigate("/emergencyservices")}>Go to Emergency Services Page</Button></p>
                                         <p>Emergency helpline numbers are essential for everyone to know in case of any emergencies such as medical emergencies, criminal activity, calamity, or natural disasters. In case of such unfortunate emergencies, we should not be running around scouting for help or trying to figure out who to call for help.</p>
                                     </>
                                 )}
@@ -168,8 +175,11 @@ function Checklist() {
                                     <>
                                         <p><strong>If you have children, you should enroll them in school as soon as possible.</strong></p>
                                         <div className="in-line">
-                                            <p><Button className="button" onClick={() => openWebsite("https://cbe.ab.ca/schools/find-a-school/Pages/default.aspx")}>Open Calgary Board of Education Website</Button></p>
-                                            <p><Button className="button" onClick={() => handleShow(schoolsQR)}>Website QR Code</Button></p>
+                                            <p><Button className="button" onClick={() => {
+                                                setCurrentUrl("https://cbe.ab.ca/schools/find-a-school/Pages/default.aspx");
+                                                setShowWarningModal(true);
+                                            }}>View Calgary Board of Education Website</Button></p>
+                                            <p><Button className="button" onClick={() => handleShow(schoolsQR)}>View on Mobile</Button></p>
                                         </div>
                                         <p>Education is mandatory for children in Canada, and public schooling is free. Ensure your child is registered in a school near your residence.</p>
                                     </>
@@ -178,8 +188,11 @@ function Checklist() {
                                     <>
                                         <p><strong>If you have educational or professional qualifications from outside Canada, you should get your credentials accredited.</strong></p>
                                         <div className="in-line">
-                                            <p><Button className="button" onClick={() => openWebsite("https://www.jobbank.gc.ca/findajob/newcomers#sectionTitle2")}>Open Government of Canada's Job Bank Website</Button></p>
-                                            <p><Button className="button" onClick={() => handleShow(qualificationsQR)}>Website QR Code</Button></p>
+                                            <p><Button className="button" onClick={() => {
+                                                setCurrentUrl("https://www.jobbank.gc.ca/findajob/newcomers#sectionTitle2");
+                                                setShowWarningModal(true);
+                                            }}>View Government of Canada's Job Bank Website</Button></p>
+                                            <p><Button className="button" onClick={() => handleShow(qualificationsQR)}>View on Mobile</Button></p>
                                         </div>
                                         <p>The process ensures your education or work experience is recognized by Canadian institutions and employers. It will help you significantly when you are seeking employment.</p>
                                         <p>The provided link above allows you to check if your credentials need to be accredited in Canada.</p>
@@ -189,13 +202,19 @@ function Checklist() {
                                     <>
                                         <p><strong>The easiest way to find employment is through job boards.</strong></p>
                                         <div className="in-line">
-                                            <p><Button className="button" onClick={() => openWebsite("https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/prepare-life-canada/prepare-work/look-jobs.html")}>Open Government of Canada Website</Button></p>
-                                            <p><Button className="button" onClick={() => handleShow(jobSearchQR)}>Website QR Code</Button></p>
+                                            <p><Button className="button" onClick={() => {
+                                                setCurrentUrl("https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/prepare-life-canada/prepare-work/look-jobs.html");
+                                                setShowWarningModal(true);
+                                            }}>View Government of Canada Website</Button></p>
+                                            <p><Button className="button" onClick={() => handleShow(jobSearchQR)}>View on Mobile</Button></p>
                                         </div>
                                         <p>The provided link above gives an overview of how and where to apply to jobs as a newcomer in Canada.</p>
                                         <div className="in-line">
-                                            <p><Button className="button" onClick={() => openWebsite("https://www.jobbank.gc.ca/findajob/newcomers")}>Open Job Bank Website</Button></p>
-                                            <p><Button className="button" onClick={() => handleShow(jobBankQR)}>Website QR Code</Button></p>
+                                            <p><Button className="button" onClick={() => {
+                                                setCurrentUrl("https://www.jobbank.gc.ca/findajob/newcomers");
+                                                setShowWarningModal(true);
+                                            }}>View Job Bank Website</Button></p>
+                                            <p><Button className="button" onClick={() => handleShow(jobBankQR)}>View on Mobile</Button></p>
                                         </div>
                                         <p>The provided link above is job board created by the Government of Canada for newcomers in Canada.</p>
                                     </>
@@ -217,27 +236,48 @@ function Checklist() {
                                     <>
                                         <p><strong>Enroll in government-funded language programs available for newcomers, such as LINC (Language Instruction for Newcomers to Canada).</strong></p>
                                         <div className="in-line">
-                                            <p><Button className="button" onClick={() => openWebsite("https://www.immigrantservicescalgary.ca/clarcregistration/")}>Open Immigrant Services Calgary Website</Button></p>
-                                            <p><Button className="button" onClick={() => handleShow(CLARCQR)}>Website QR Code</Button></p>
+                                            <p><Button className="button" onClick={() => {
+                                                setCurrentUrl("https://www.immigrantservicescalgary.ca/clarcregistration/");
+                                                setShowWarningModal(true);
+                                            }}>View Immigrant Services Calgary Website</Button></p>
+                                            <p><Button className="button" onClick={() => handleShow(CLARCQR)}>View on Mobile</Button></p>
                                         </div>
                                         <p>Canada has two official languages: English and French. English is the most commonly spoken language in most provinces and territories. These courses help build necessary language skills for work and daily life in Canada.</p>
                                         <p><strong>OR complete a language test & get a certificate.</strong></p>
                                         <div className="in-line">
                                             <p>English:</p>
-                                            <p><Button className="button" onClick={() => openWebsite("https://ielts.org/")}>Open IELTS Website</Button></p>
-                                            <p><Button className="button" onClick={() => openWebsite("https://www.celpip.ca/")}>Open CELPIP Website</Button></p>
-                                            <p><Button className="button" onClick={() => openWebsite("https://www.ets.org/toefl.html")}>Open TOEFL Website</Button></p>
+                                            <p><Button className="button" onClick={() => {
+                                                setCurrentUrl("https://ielts.org/");
+                                                setShowWarningModal(true);
+                                            }}>View IELTS Website</Button></p>
+                                            <p><Button className="button" onClick={() => {
+                                                setCurrentUrl("https://www.celpip.ca/");
+                                                setShowWarningModal(true);
+                                            }}>View CELPIP Website</Button></p>
+                                            <p><Button className="button" onClick={() => {
+                                                setCurrentUrl("https://www.ets.org/toefl.html");
+                                                setShowWarningModal(true);
+                                            }}>View TOEFL Website</Button></p>
                                         </div>
                                         <div className="in-line">
                                             <p>French:</p>
-                                            <p><Button className="button" onClick={() => openWebsite("https://www.lefrancaisdesaffaires.fr/en/tests-diplomas/test-for-evaluating-french-tef/")}>Open TEF Website</Button></p>
-                                            <p><Button className="button" onClick={() => openWebsite("https://www.france-education-international.fr/hub/diplomes-tests")}>Open DELF Website</Button></p>
+                                            <p><Button className="button" onClick={() => {
+                                                setCurrentUrl("https://www.lefrancaisdesaffaires.fr/en/tests-diplomas/test-for-evaluating-french-tef/");
+                                                setShowWarningModal(true);
+                                            }}>View TEF Website</Button></p>
+                                            <p><Button className="button" onClick={() => {
+                                                setCurrentUrl("https://www.france-education-international.fr/hub/diplomes-tests");
+                                                setShowWarningModal(true);
+                                            }}>View DELF Website</Button></p>
                                         </div>
                                         <p>There are cases where you may need to prove your ability in either English or French, such as: when you apply for a job or to get into a university or college. There are several language tests that are widely accepted. They will give you a certificate and test results that you can use for many purposes.</p>
                                         <p><strong>For more information and this overview, visit the "Improving your English and French" page on the Government of Canada website:</strong></p>
                                         <div className="in-line">
-                                            <p><Button className="button" onClick={() => openWebsite("https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/new-life-canada/improve-english-french.html")}>Open Government of Canada Website</Button></p>
-                                            <p><Button className="button" onClick={() => handleShow(GoCEngNFrQR)}>Website QR Code</Button></p>
+                                            <p><Button className="button" onClick={() => {
+                                                setCurrentUrl("https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/new-life-canada/improve-english-french.html");
+                                                setShowWarningModal(true);
+                                            }}>View Government of Canada Website</Button></p>
+                                            <p><Button className="button" onClick={() => handleShow(GoCEngNFrQR)}>View on Mobile</Button></p>
                                         </div>
                                     </>
                                 )}
@@ -245,8 +285,11 @@ function Checklist() {
                                     <>
                                         <p><strong>Apply for this monthly, tax-free payment to help families with the cost of raising children.</strong></p>
                                         <div className="in-line">
-                                            <p><Button className="button" onClick={() => openWebsite("https://www.canada.ca/en/revenue-agency/services/child-family-benefits/canada-child-benefit-overview.html")}>Open Government of Canada Website</Button></p>
-                                            <p><Button className="button" onClick={() => handleShow(childTaxBenefitQR)}>Website QR Code</Button></p>
+                                            <p><Button className="button" onClick={() => {
+                                                setCurrentUrl("https://www.canada.ca/en/revenue-agency/services/child-family-benefits/canada-child-benefit-overview.html");
+                                                setShowWarningModal(true);
+                                            }}>View Government of Canada Website</Button></p>
+                                            <p><Button className="button" onClick={() => handleShow(childTaxBenefitQR)}>View on Mobile</Button></p>
                                         </div>
                                         <p>The benefit amount is based on your family income and the number of children under 18. Register early to start receiving benefits.</p>
                                         
@@ -256,8 +299,11 @@ function Checklist() {
                                     <>
                                         <p><strong>Apply for a driver’s license to gain independence and make commuting easier.</strong></p>
                                         <div className="in-line">
-                                            <p><Button className="button" onClick={() => window.open("https://www.alberta.ca/get-drivers-licence")}>Open Alberta Website</Button></p>
-                                            <p><Button className="button" onClick={() => handleShow(driversLicenseQR)}>Website QR Code</Button></p>
+                                            <p><Button className="button" onClick={() => {
+                                                setCurrentUrl("https://www.alberta.ca/get-drivers-licence");
+                                                setShowWarningModal(true);
+                                            }}>View Alberta Website</Button></p>
+                                            <p><Button className="button" onClick={() => handleShow(driversLicenseQR)}>View on Mobile</Button></p>
                                             <p><Button className="button" onClick={() => openMapPopup("Registry")}>📍</Button></p>
                                         </div>
                                         <p>Each province has specific requirements and tests. Learn more about the process, including document requirements and fees.</p>
@@ -267,8 +313,11 @@ function Checklist() {
                                     <>
                                         <p><strong>Learn about Canadian laws, your rights as a resident, and your responsibilities under Canadian law.</strong></p>
                                         <div className="in-line">
-                                            <p><Button className="button" onClick={() => window.open("https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/learn-about-canada/laws.html")}>Open Government of Canada Website</Button></p>
-                                            <p><Button className="button" onClick={() => handleShow(lawsQR)}>Website QR Code</Button></p>
+                                            <p><Button className="button" onClick={() => {
+                                                setCurrentUrl("https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/learn-about-canada/laws.html");
+                                                setShowWarningModal(true);
+                                            }}>View Government of Canada Website</Button></p>
+                                            <p><Button className="button" onClick={() => handleShow(lawsQR)}>View on Mobile</Button></p>
                                         </div>
                                         <p>Canada has various laws that are essential for your safety, rights, and overall well-being.</p>
                                     </>
@@ -277,18 +326,27 @@ function Checklist() {
                                     <>
                                         <p><strong>Renting a home in Canada information</strong></p>
                                         <div className="in-line">
-                                            <p><Button className="button" onClick={() => window.open("https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/new-life-canada/housing/renting.html")}>Open Government of Canada Website</Button></p>
-                                            <p><Button className="button" onClick={() => handleShow(rentHomeQR)}>Website QR Code</Button></p>
+                                            <p><Button className="button" onClick={() => {
+                                                setCurrentUrl("https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/new-life-canada/housing/renting.html");
+                                                setShowWarningModal(true);
+                                            }}>View Government of Canada Website</Button></p>
+                                            <p><Button className="button" onClick={() => handleShow(rentHomeQR)}>View on Mobile</Button></p>
                                         </div>
                                         <p><strong>Buying a home in Canada information</strong></p>
                                         <div className="in-line">
-                                            <p><Button className="button" onClick={() => window.open("https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/new-life-canada/housing/buying.html")}>Open Government of Canada Website</Button></p>
-                                            <p><Button className="button" onClick={() => handleShow(buyHomeQR)}>Website QR Code</Button></p>
+                                            <p><Button className="button" onClick={() => {
+                                                setCurrentUrl("https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/new-life-canada/housing/buying.html");
+                                                setShowWarningModal(true);
+                                            }}>View Government of Canada Website</Button></p>
+                                            <p><Button className="button" onClick={() => handleShow(buyHomeQR)}>View on Mobile</Button></p>
                                         </div>
                                         <p><strong>Understand your options for renting or buying a home and know your rights as a tenant.</strong></p>
                                         <div className="in-line">
-                                            <p><Button className="button" onClick={() => window.open("https://www.alberta.ca/rights-and-responsibilities")}>Open Alberta Website</Button></p>
-                                            <p><Button className="button" onClick={() => handleShow(homeLawsQR)}>Website QR Code</Button></p>
+                                            <p><Button className="button" onClick={() => {
+                                                setCurrentUrl("https://www.alberta.ca/rights-and-responsibilities");
+                                                setShowWarningModal(true);
+                                            }}>View Alberta Website</Button></p>
+                                            <p><Button className="button" onClick={() => handleShow(homeLawsQR)}>View on Mobile</Button></p>
                                         </div>
                                         <p>This is crucial for ensuring you have stable housing and are aware of protections under Canadian tenant laws.</p>
                                     </>
@@ -297,8 +355,11 @@ function Checklist() {
                                     <>
                                         <p><strong>Learn about Canadian Employment laws and your rights as an employee.</strong></p>
                                         <div className="in-line">
-                                            <p><Button className="button" onClick={() => window.open("https://www.alberta.ca/alberta-employment-standards-rules")}>Open Alberta Website</Button></p>
-                                            <p><Button className="button" onClick={() => handleShow(employeeLawsQR)}>Website QR Code</Button></p>
+                                            <p><Button className="button" onClick={() => {
+                                                setCurrentUrl("https://www.alberta.ca/alberta-employment-standards-rules");
+                                                setShowWarningModal(true);
+                                            }}>View Alberta Website</Button></p>
+                                            <p><Button className="button" onClick={() => handleShow(employeeLawsQR)}>View on Mobile</Button></p>
                                         </div>
                                         <p>Employment laws ensure safe, fair treatment in the workplace and protect employees’ rights.</p>
                                     </>
@@ -307,8 +368,11 @@ function Checklist() {
                                     <>
                                         <p><strong>Register with a family doctor to access ongoing healthcare and medical support for you and your family.</strong></p>
                                         <div className="in-line">
-                                            <p><Button className="button" onClick={() => window.open("https://albertafindadoctor.ca/")}>Open Alberta Website</Button></p>
-                                            <p><Button className="button" onClick={() => handleShow(familyDocQR)}>Website QR Code</Button></p>
+                                            <p><Button className="button" onClick={() => {
+                                                setCurrentUrl("https://albertafindadoctor.ca/");
+                                                setShowWarningModal(true);
+                                            }}>View Alberta Website</Button></p>
+                                            <p><Button className="button" onClick={() => handleShow(familyDocQR)}>View on Mobile</Button></p>
                                         </div>
                                         <p>Alberta’s healthcare system provides access to general practitioners, who are often your first point of contact for medical needs.</p>
                                     </>
@@ -320,8 +384,11 @@ function Checklist() {
                                         <p><strong>IRCC Client Support Center: 1-888-242-2100</strong></p>
                                         <p>Monday to Friday, 8 a.m. to 4 p.m. (your local time)</p>
                                         <div className="in-line">
-                                            <p><Button className="button" onClick={() => openWebsite("https://www.canada.ca/en/immigration-refugees-citizenship/corporate/contact-ircc.html")}>Open IRCC's General Support Website</Button></p>
-                                            <p><Button className="button" onClick={() => handleShow(clientSupportQR)}>Website QR Code</Button></p>
+                                            <p><Button className="button" onClick={() => {
+                                                setCurrentUrl("https://www.canada.ca/en/immigration-refugees-citizenship/corporate/contact-ircc.html");
+                                                setShowWarningModal(true);
+                                            }}>View IRCC's General Support Website</Button></p>
+                                            <p><Button className="button" onClick={() => handleShow(clientSupportQR)}>View on Mobile</Button></p>
                                         </div>
                                     </>
                                 )}
@@ -329,8 +396,11 @@ function Checklist() {
                                     <>
                                         <p><strong>Look into post-secondary education options if you’re interested in furthering your studies or training in Canada.</strong></p>
                                         <div className="in-line">
-                                            <p><Button className="button" onClick={() => openWebsite("https://www.alberta.ca/designated-post-secondary-institutions-alberta")}>Open Alberta Website</Button></p>
-                                            <p><Button className="button" onClick={() => handleShow(postSecondaryQR)}>Website QR Code</Button></p>
+                                            <p><Button className="button" onClick={() => {
+                                                setCurrentUrl("https://www.alberta.ca/designated-post-secondary-institutions-alberta");
+                                                setShowWarningModal(true);
+                                            }}>View Alberta Website</Button></p>
+                                            <p><Button className="button" onClick={() => handleShow(postSecondaryQR)}>View on Mobile</Button></p>
                                         </div>
                                         <p>Canada offers many recognized programs, including universities, colleges, and technical training centers.</p>
                                     </>
@@ -339,8 +409,11 @@ function Checklist() {
                                     <>
                                         <p><strong>Explore available mental health resources, including counseling and community support services.</strong></p>
                                         <div className="in-line">
-                                            <p><Button className="button" onClick={() => openWebsite("https://www.albertahealthservices.ca/services/page11443.aspx")}>Open AHS Website</Button></p>
-                                            <p><Button className="button" onClick={() => handleShow(mentalHealthSupportQR)}>Website QR Code</Button></p>
+                                            <p><Button className="button" onClick={() => {
+                                                setCurrentUrl("https://www.albertahealthservices.ca/services/page11443.aspx");
+                                                setShowWarningModal(true);
+                                            }}>View AHS Website</Button></p>
+                                            <p><Button className="button" onClick={() => handleShow(mentalHealthSupportQR)}>View on Mobile</Button></p>
                                             <p><Button className="button" onClick={() => openMapPopup("Mental Health Support")}>📍</Button></p>
                                         </div>
                                         <p><strong>Non-Emergency Mental Health Line: 2-1-1.</strong></p>
@@ -356,25 +429,54 @@ function Checklist() {
             <h3>SUMMARY WEBSITES</h3>
             <br />
             <div className="in-line">
-                <p><Button className="button" onClick={() => openWebsite("https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants.html")}>Open IRCC's "Newcomers to Canada" Website</Button></p>
-                <p><Button className="button" onClick={() => handleShow(IRCCNewcomersQR)}>Website QR Code</Button></p>
+                <p><Button className="button" onClick={() => {
+                    setCurrentUrl("https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants.html");
+                    setShowWarningModal(true);
+                }}>View IRCC's "Newcomers to Canada" Website</Button></p>
+                <p><Button className="button" onClick={() => handleShow(IRCCNewcomersQR)}>View on Mobile</Button></p>
             </div>
             <p>This website contains all information and services the IRCC provides for newcomers to Canada.</p>
             <br />
             <div className="in-line">
-                <p><Button className="button" onClick={() => openWebsite("https://www.canada.ca/en/immigration-refugees-citizenship/campaigns/newcomers.html")}>Open Government of Canada's "Newcomer Services" Website</Button></p>
-                <p><Button className="button" onClick={() => handleShow(GOCNewcomersQR)}>Website QR Code</Button></p>
+                <p><Button className="button" onClick={() => {
+                    setCurrentUrl("https://www.canada.ca/en/immigration-refugees-citizenship/campaigns/newcomers.html");
+                    setShowWarningModal(true);
+                }}>View Government of Canada's "Newcomer Services" Website</Button></p>
+                <p><Button className="button" onClick={() => handleShow(GOCNewcomersQR)}>View on Mobile</Button></p>
             </div>
             <p>This website contains similar information to the link above but is a more general summary for newcomers to Canada, created by the Governemnt of Canada.</p>
             <br />
             <div className="in-line">
-                <p><Button className="button" onClick={() => openWebsite("https://www.centrefornewcomers.ca/")}>Open Center for Newcomers Calgary Website</Button></p>
-                <p><Button className="button" onClick={() => handleShow(newcomersYYCQR)}>Website QR Code</Button></p>
+                <p><Button className="button" onClick={() => {
+                    setCurrentUrl("https://www.centrefornewcomers.ca/");
+                    setShowWarningModal(true);
+                }}>View Center for Newcomers Calgary Website</Button></p>
+                <p><Button className="button" onClick={() => handleShow(newcomersYYCQR)}>View on Mobile</Button></p>
             </div>
             <p>This website contains all information and services relating to newcomers in Calgary.</p>
+            
+            <Modal show={showWarningModal} onHide={() => setShowWarningModal(false)}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Caution</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <p>Please do not enter any personal or sensitive information on external websites. If you need to access anything confidential, please select "View on Mobile".</p>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={() => setShowWarningModal(false)}>Go Back</Button>
+                    <Button variant="primary" onClick={() => {
+                        setShowWarningModal(false);
+                        setTimeout(() => {
+                            window.open(currentUrl, '_blank', 'width=800,height=600');
+                        }, 0);
+                    }}
+                    >I Understand</Button>
+                </Modal.Footer>
+            </Modal>
+            
             <Modal show={showModal} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Website QR Code</Modal.Title>
+                    <Modal.Title>View on Mobile</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <img src={currentImage} alt="Download QR Code" style={{ width: '100%' }} />
