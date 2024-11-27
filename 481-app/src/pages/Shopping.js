@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-//import '../style/Shopping.css'; 
-import '../style/transportation.css'; 
-import WalmartQR from '../images/shopping-images/walmartQR.png';
+import '../style/shopping.css'; 
+//import '../style/transportation.css'; 
+import WalmartQR from '../images/shopping-images/WalmartQR.png';
+import HHQR from '../images/shopping-images/HHQR.png';
+import CTQR from '../images/shopping-images/CTQR.png';
 import NavigationBar from '../components/NavigationBar';
 
 
@@ -14,8 +16,8 @@ function Shopping() {
     const [currentImage, setCurrentImage] = useState('');
     const [selectedCategories, setSelectedCategories] = useState(new Set()); 
     const [currentLocation, setCurrentLocation] = useState(null); // Store the kiosk's current location
-
-
+    const [showWarningModal, setShowWarningModal] = useState(false);
+    const [link, setLink] = useState(null);
   
     const accordionItems = [
       { 
@@ -33,7 +35,7 @@ function Shopping() {
           location: { lat: 51.041031747066654, lon: -114.13960017972096}//there are multiple locations
       },
       { 
-          title: 'Mall', 
+          title: 'Shopping Malls', 
           eventKey: '2', 
           categories: ['Clothing', 'Furniture', 'Other'], 
           price: '$$$',
@@ -57,19 +59,12 @@ function Shopping() {
   
 
     useEffect(() => {
-        // Get user's current location on load
-        //navigator.geolocation.getCurrentPosition(
-            //(position) => {
                 setCurrentLocation({
                     //lat: position.coords.latitude,
                     //lon: position.coords.longitude,
                     lat: 51.044313574830255,//default location (calgary tower)
                     lon: -114.06309093347211,
                 });
-            //},
-            //(error) => console.error("Error fetching location:", error),
-            //{ enableHighAccuracy: true }
-        //);
     }, []);
 
     // Function to calculate distance between two locations
@@ -158,26 +153,44 @@ function Shopping() {
     };
 
     const filteredAndSortedItems = sortAccordionItems(
-      accordionItems.filter(item =>
-          selectedCategories.size === 0 || 
-          item.categories.some(category => selectedCategories.has(category))
-      )
+        accordionItems.filter(item =>
+          // Ensure that every selected category is in the item's categories
+          [...selectedCategories].every(selectedCategory => item.categories.includes(selectedCategory))
+        )
     );
 
-    const openWebsite = (url) => {
-      window.open(url, '_blank', "width=800,height=600")
+    const openWebsite = () => {
+        window.open(link, '_blank', "width=800,height=600");
+        setShowWarningModal(false);
     };
 
-    const openMapPopup = (destLat, destLon) => {
-      if (currentLocation) {
-          const { lat, lon } = currentLocation;
-          const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${destLat},${destLon}&origin=${lat},${lon}`;
+    const openMapPopup = (destLatOrType, destLon) => {
+        if (typeof destLatOrType === 'string') {
+          // If a string like "mall" is passed, open a search on Google Maps
+          const { lat, lon } = currentLocation || {};
+          const searchQuery = encodeURIComponent(destLatOrType); // Encode the search term
+          const mapsUrl = `https://www.google.com/maps/search/${searchQuery}/@${lat},${lon},15z`;
           window.open(mapsUrl, 'MapPopup', 'width=800,height=600,menubar=no,toolbar=no,location=no,status=no');
-      } else {
-          alert('Current location is not available. Please try again later.');
-      }
+       
+        } else if (typeof destLatOrType === 'number' && typeof destLon === 'number') {
+          // If lat/lon coordinates are passed, open a directions map
+          const { lat, lon } = currentLocation || {};
+          if (lat && lon) {
+            const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${destLatOrType},${destLon}&origin=${lat},${lon}`;
+            window.open(mapsUrl, 'MapPopup', 'width=800,height=600,menubar=no,toolbar=no,location=no,status=no');
+          } else {
+            alert('Current location is not available. Please try again later.');
+          }
+        } else {
+          alert('Invalid input provided to openMapPopup.');
+        }
     };
+      
   
+    const handleWarningModal = (site) => {
+        setLink(site);
+        setShowWarningModal(true);
+    };
 
     return (
         <>
@@ -213,9 +226,8 @@ function Shopping() {
             <div className="sort-container">
                 <label htmlFor="sort">Sort by:</label>
                 <select id="sort" value={sortCriteria} onChange={handleSortChange}>
-                    <option value="none">None</option>
-                    <option value="proximity">Proximity</option>
                     <option value="price">Price</option>
+                    <option value="proximity">Distance</option>
                 </select>
             </div>
 
@@ -234,37 +246,75 @@ function Shopping() {
                                     <p>Walmart is a large retail store that offers a wide variety of products, including groceries, clothing, electronics, and household items, often at lower prices. 
                                       It provides a one-stop shopping experience, making it convenient for customers to find everything they need in one place.</p>
                                     <div className="in-line">
-                                        <p><Button className="button" onClick={() => openWebsite("https://www.walmart.ca/en")}>Open Website</Button></p>
+                                        <p><Button className="button" onClick={() => handleWarningModal("https://www.walmart.ca/en")}>Open Website</Button></p>
                                         <p><Button className="button" onClick={() => handleShow(WalmartQR)}>Website QR Code</Button></p>
                                     </div>
-                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup(item.location.lat, item.location.lon)}>📍</Button></p>
+                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup("walmart")}>📍</Button></p>
                                   </>
                                 )}
                                 {item.title === 'Thrift Stores' && (
-                                    <p>details and links</p>
+                                  <>
+                                    <p>Calgary has several thrift stores where you can find secondhand clothes, furniture and household items at affordable prices.</p>
+                                    <div className="in-line">
+                                    </div>
+                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup("thrift stores")}>📍</Button></p>
+                                  </>
                                 )}
                                 {item.title === 'Home Hardware' && (
-                                    <p>details and links</p>
+                                  <>
+                                    <p>Home Hardware sells of various materials and tools for home improvement and construction projects.</p>
+                                    <div className="in-line">
+                                        <p><Button className="button" onClick={() => handleWarningModal("https://www.homehardware.ca/en/")}>Open Website</Button></p>
+                                        <p><Button className="button" onClick={() => handleShow(HHQR)}>Website QR Code</Button></p>
+                                    </div>
+                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup("home hardware")}>📍</Button></p>
+                                  </>
                                 )}
                                 {item.title === 'Canadian Tire' && (
-                                    <p>details and links</p>
+                                  <>
+                                    <p>Canadian Tire sells various products for home, vehicles, sports, and leisure.</p>
+                                    <div className="in-line">
+                                        <p><Button className="button" onClick={() => handleWarningModal("https://www.canadiantire.ca/en.html")}>Open Website</Button></p>
+                                        <p><Button className="button" onClick={() => handleShow(CTQR)}>Website QR Code</Button></p>
+                                    </div>
+                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup("canadian tire")}>📍</Button></p>
+                                  </>
                                 )}
-                                {item.title === 'Mall' && (
-                                    <p>details and links</p>
+                                {item.title === 'Shopping Malls' && (
+                                  <>
+                                    <p>Calgary has several shopping malls. Malls have multiple stores that sell new clothing, furniture, and many other products.</p>
+                                    <div className="in-line">
+                                    </div>
+                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup("shopping malls")}>📍</Button></p>
+                                  </>
                                 )}
                             </Accordion.Body>
                         </Accordion.Item>
                     ))}
                 </Accordion>
             </div>
-
-            <Modal show={showModal} onHide={handleClose}>
+            <Modal show={showWarningModal} onHide={() => setShowWarningModal(false)}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Website QR Code</Modal.Title>
+                    <Modal.Title>Caution</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <img src={currentImage} alt="Download QR Code" style={{ width: '100%' }} />
+                    <p>Please do not enter any personal or sensitive information on external websites. If you need to access anything confidential, please select "View on Mobile".</p>
                 </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={() => setShowWarningModal(false)}>Go Back</Button>
+                    <Button variant="primary" onClick={openWebsite}>I Understand</Button>
+                </Modal.Footer>
+            </Modal>
+            <Modal show={showModal} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>View Mobile Site</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <img src={currentImage} alt="view QR code" style={{ width: '100%' }} />
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>Close</Button>
+                </Modal.Footer>
             </Modal>
         </div>
         </>
