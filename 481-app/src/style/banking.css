@@ -81,7 +81,7 @@
     background-color: var(--background-color);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 450px;
+    width: 470px;
     position: relative;
 }
 
@@ -116,13 +116,14 @@
     font-size: 18px;
     padding: 5px;
     cursor: pointer;
-    background-color: var(--button-color);
-    color: white;
-    border: none;
+    border: 2px solid var(--main-color);
+    background-color: white;
+    color: var(--main-color);
     border-radius: 4px;
     transition: background-color 0.3s ease;
 }
 
 .Banking .action-buttons button:hover {
-    background-color: var(--button-hover-color);
+    background-color: var(--main-color);
+    color: white;
 }
