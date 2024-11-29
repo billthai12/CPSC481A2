@@ -108,21 +108,19 @@
 .Banking .action-buttons {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 10px;
     margin-top: 10px;
+
 }
 
 .Banking .action-buttons button {
-    font-size: 18px;
-    padding: 5px;
-    cursor: pointer;
-    background-color: var(--button-color);
-    color: white;
-    border: none;
+    background-color: var(--white-color);
+    border: 2px solid var(--main-color);
     border-radius: 4px;
-    transition: background-color 0.3s ease;
+    font-size: 0.9em;
+    color: var(--main-color);
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
 }
 
-.Banking .action-buttons button:hover {
-    background-color: var(--button-hover-color);
-}
