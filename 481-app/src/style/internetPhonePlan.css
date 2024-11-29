@@ -1,4 +1,12 @@
 :root {
+    --main-color: #c8102e;
+    --white-color: #ffffff;
+    --grey-light: #f8f9fa;
+    --dark-grey: #333333;
+    --medium-grey: #666666;
+    --hover-background: var(--main-color);
+    --hover-text: var(--white-color);
+
     --background-color: #f8f9fa;
     --hover-background-color: #f8e2de;
     --button-color: #007bff;
@@ -7,153 +15,111 @@
     --border-color: #ced4da;
 }
 
-.InternetPhonePlan h1 {
-    font-size: 2rem;
-    color: var(--text-color);
-    margin-bottom: 20px;
+.InternetPhonePlanPage {
+    padding: 20px;
+    position: relative;
+
 }
 
-.InternetPhonePlan h1 {
+.InternetPhonePlanPage .header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
     margin-bottom: 20px;
+}
+.InternetPhonePlanPage  .header-container h1 {
+    flex: 1;
+    text-align: center;
+    margin: 0;
     font-size: 2rem;
+}
+
+.InternetPhonePlanPage .sort-container {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px;
+    z-index: 10;
+}
+
+.InternetPhonePlanPage .sort-container label {
+    margin: 0;
     color: var(--text-color);
 }
 
+.InternetPhonePlanPage .sort-container select {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: var(--white-color);
+    color: var(--text-color);
+    transition: border-color 0.3s ease;
+}
 
-/* Plans container */
-.plans-container {
+.InternetPhonePlanPage .sort-container select:focus {
+    border-color: var(--button-color);
+    outline: none;
+}
+
+.InternetPhonePlanPage .providers-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Set 4 cards per row */
-    gap: 15px; /* Gap between cards */
-    justify-items: center; /* Center items in their grid cells */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    justify-items: center;
 }
 
-
-
-/* Plan card style */
-.plan-card {
+.InternetPhonePlanPage .provider-card {
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: var(--background-color);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 180px; /* Smaller card width */
+    width: 450px;
     position: relative;
-    padding: 10px; /* Reduce padding */
 }
 
-.plan-card:hover {
+.InternetPhonePlanPage .provider-card:hover {
     background-color: var(--hover-background-color);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
-
-.plan-link {
+.InternetPhonePlanPage .provider-link {
     display: block;
     text-decoration: none;
     color: inherit;
     width: 100%;
-    padding: 8px; /* Smaller padding */
+    padding: 10px;
     border-radius: 8px;
-    text-align: center;
+}
+.InternetPhonePlanPage .provider-logo {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
 }
 
-.plan-logo {
-    width: 80px; /* Adjusted logo size for smaller cards */
-    height: auto;
-    margin-bottom: 8px;
-}
-/* internetPhonePlan.css */
-
-/* Style for provider cards */
-.provider-card {
-    width: 250px;  /* Fixed width for the cards */
-    height: 280px; /* Fixed height for the cards */
-    padding: 10px; /* Add some padding inside the card */
-    text-align: center; /* Center content */
-    margin: 10px; /* Margin between cards */
-    overflow: hidden; /* Hide overflow if content exceeds */
-    border: 1px solid #ccc; /* Optional: Add a border for better visibility */
-    transition: transform 0.2s, box-shadow 0.2s; /* Smooth transition for hover effects */
-
-}
-.provider-card:hover {
-    background-color: var(--hover-background-color);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-}
-
-/* Style for provider logos */
-.provider-logo {
-    width: 100%; /* Make logo take the full width of the card */
-    height: 80px; /* Fixed height for the logos */
-    object-fit: contain; /* Maintain aspect ratio */
-    margin-bottom: 10px; /* Space below the logo */
-}
-
-/* Action buttons styling */
-.action-buttons {
+.InternetPhonePlanPage .action-buttons {
     display: flex;
     justify-content: center;
-    gap: 8px; /* Reduced gap */
-    margin-top: 8px; /* Reduced margin */
-}
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
 
-.action-buttons button {
-    font-size: 18px;
-    padding: 5px;
+}
+.InternetPhonePlanPage .action-buttons button {
+    background-color: var(--white-color);
+    border: 2px solid var(--main-color);
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: var(--main-color);
+    transition: background-color 0.3s, color 0.3s;
     cursor: pointer;
-    background-color: var(--button-color);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-}
-
-.action-buttons button:hover {
-    background-color: var(--button-hover-color);
-}
-
-.star-rating .filled {
-    color: gold;
-}
-
-.star-rating .empty {
-    color: lightgray;
-}
-
-/* Sort container for sorting plans */
-.sort-container {
-    position: absolute;
-    top: 140px; /* Adjust position if needed */
-    right: 20px;
-    z-index: 10;
-}
-
-.sort-container label {
-    margin-right: 10px;
-    color: var(--text-color);
-}
-
-.sort-container select {
-    padding: 8px 12px;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    font-size: 16px;
-    background-color: #ffffff;
-    color: var(--text-color);
-    transition: border-color 0.3s ease;
-}
-
-.sort-container select:focus {
-    border-color: var(--button-color);
-    outline: none;
 }
 
 
 
-
-.provider-phone {
-    font-size: 1rem; /* Adjust as needed */
-    color: #333; /* Or any color you prefer */
-    margin-bottom: 8px; /* Space between phone and star rating */
-}

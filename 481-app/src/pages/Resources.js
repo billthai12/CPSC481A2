@@ -2,9 +2,13 @@ import React, { useState, useEffect } from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-//import '../style/resources.css'; 
-import '../style/transportation.css'; 
+import '../style/resources.css'; 
+//import '../style/transportation.css'; 
 import ImmigrantServicesCalgaryQR from '../images/resources-images/immigrantservicescalgaryQR.png';
+import CPLQR from '../images/resources-images/CPLQR.png';
+import CIWAQR from '../images/resources-images/CIWAQR.png';
+import FoodBankQR from '../images/resources-images/FoodBankQR.png';
+import CentreForNewcomersQR from '../images/resources-images/CentreForNewcomersQR.png';
 import NavigationBar from '../components/NavigationBar';
 
 
@@ -14,6 +18,8 @@ function Resources() {
     const [currentImage, setCurrentImage] = useState('');
     const [selectedCategories, setSelectedCategories] = useState(new Set()); 
     const [currentLocation, setCurrentLocation] = useState(null); // Store the kiosk's current location
+    const [showWarningModal, setShowWarningModal] = useState(false);
+    const [link, setLink] = useState(null);
 
     const accordionItems = [
       { 
@@ -55,19 +61,12 @@ function Resources() {
   
 
     useEffect(() => {
-        // Get user's current location on load
-        //navigator.geolocation.getCurrentPosition(
-            //(position) => {
                 setCurrentLocation({
                     //lat: position.coords.latitude,
                     //lon: position.coords.longitude,
                     lat: 51.044313574830255,//default location (calgary tower)
                     lon: -114.06309093347211,
                 });
-            //},
-            //(error) => console.error("Error fetching location:", error),
-            //{ enableHighAccuracy: true }
-        //);
     }, []);
 
     // Function to calculate distance between two locations
@@ -88,9 +87,14 @@ function Resources() {
       return R * c; // Distance in km
     };
 
+    const handleWarningModal = (site) => {
+        setLink(site);
+        setShowWarningModal(true);
+    };
+    
     // Sort items by proximity or relevancy
     const sortAccordionItems = (items) => {
-      if (sortCriteria === 'proximity') {
+      if (sortCriteria === 'distance') {
         return [...items].sort((a, b) => calculateDistance(currentLocation, a.location) - calculateDistance(currentLocation, b.location));
       } else if (sortCriteria === 'relevancy') {
         return [...items].sort((a, b) => {
@@ -157,24 +161,37 @@ function Resources() {
     };
 
     const filteredAndSortedItems = sortAccordionItems(
-      accordionItems.filter(item =>
-          selectedCategories.size === 0 || 
-          item.categories.some(category => selectedCategories.has(category))
-      )
+        accordionItems.filter(item =>
+          // Ensure that every selected category is in the item's categories
+          [...selectedCategories].every(selectedCategory => item.categories.includes(selectedCategory))
+        )
     );
 
-    const openWebsite = (url) => {
-      window.open(url, '_blank', "width=800,height=600")
+    const openWebsite = () => {
+      window.open(link, '_blank', "width=800,height=600");
+      setShowWarningModal(false);
     };
 
-    const openMapPopup = (destLat, destLon) => {
-      if (currentLocation) {
-          const { lat, lon } = currentLocation;
-          const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${destLat},${destLon}&origin=${lat},${lon}`;
+    const openMapPopup = (destLatOrType, destLon) => {
+        if (typeof destLatOrType === 'string') {
+          // If a string like "mall" is passed, open a search on Google Maps
+          const { lat, lon } = currentLocation || {};
+          const searchQuery = encodeURIComponent(destLatOrType); // Encode the search term
+          const mapsUrl = `https://www.google.com/maps/search/${searchQuery}/@${lat},${lon},15z`;
           window.open(mapsUrl, 'MapPopup', 'width=800,height=600,menubar=no,toolbar=no,location=no,status=no');
-      } else {
-          alert('Current location is not available. Please try again later.');
-      }
+       
+        } else if (typeof destLatOrType === 'number' && typeof destLon === 'number') {
+          // If lat/lon coordinates are passed, open a directions map
+          const { lat, lon } = currentLocation || {};
+          if (lat && lon) {
+            const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${destLatOrType},${destLon}&origin=${lat},${lon}`;
+            window.open(mapsUrl, 'MapPopup', 'width=800,height=600,menubar=no,toolbar=no,location=no,status=no');
+          } else {
+            alert('Current location is not available. Please try again later.');
+          }
+        } else {
+          alert('Invalid input provided to openMapPopup.');
+        }
     };
   
 
@@ -212,9 +229,9 @@ function Resources() {
             <div className="sort-container">
                 <label htmlFor="sort">Sort by:</label>
                 <select id="sort" value={sortCriteria} onChange={handleSortChange}>
-                    <option value="none">None</option>
-                    <option value="proximity">Proximity</option>
                     <option value="relevancy">Relevancy</option>
+                    <option value="distance">Distance</option>
+                    
                 </select>
             </div>
 
@@ -229,37 +246,79 @@ function Resources() {
                                   <>
                                     <p>Immigrant Services Calgary offers a range of services to support people who are settling into a new life in Canada, including: job support, translation, English testing, and help for families.</p>
                                     <div className="in-line">
-                                        <p><Button className="button" onClick={() => openWebsite("https://www.immigrantservicescalgary.ca/")}>Open Website</Button></p>
-                                        <p><Button className="button" onClick={() => handleShow(ImmigrantServicesCalgaryQR)}>Website QR Code</Button></p>
+                                        <p><Button className="button" onClick={() => handleWarningModal("https://www.immigrantservicescalgary.ca/")}>View Website</Button></p>
+                                        <p><Button className="button" onClick={() => handleShow(ImmigrantServicesCalgaryQR)}>View on Mobile</Button></p>
                                     </div>
                                     <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup(item.location.lat, item.location.lon)}>📍</Button></p>
                                   </>
                                 )}
                                 {item.title === 'Calgary Public Library' && (
-                                    <p>details and links</p>
+                                  <>
+                                    <p>Calgary Public Library provides free access to the internet and books. They also provide different services and programs which you can explore on their website.</p>
+                                    <div className="in-line">
+                                        <p><Button className="button" onClick={() => handleWarningModal("https://www.calgarylibrary.ca/")}>View Website</Button></p>
+                                        <p><Button className="button" onClick={() => handleShow(CPLQR)}>View on Mobile</Button></p>
+                                    </div>
+                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup("library")}>📍</Button></p>
+                                  </>
                                 )}
                                 {item.title === "Calgary Immigrant Women's Association" && (
-                                    <p>details and links</p>
+                                  <>
+                                    <p>CIWA supports immigrant and refugee women, girls and their families. They have numerous services that include employement, housing, childcare and mental health.</p>
+                                    <div className="in-line">
+                                        <p><Button className="button" onClick={() => handleWarningModal("https://ciwa-online.com/")}>View Website</Button></p>
+                                        <p><Button className="button" onClick={() => handleShow(CIWAQR)}>View on Mobile</Button></p>
+                                    </div>
+                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup(item.location.lat, item.location.lon)}>📍</Button></p>
+                                  </>
                                 )}
                                 {item.title === 'Calgary Food Bank' && (
-                                    <p>details and links</p>
+                                  <>
+                                    <p>Calgary Food Bank is the first line of emergency food support for individuals and families in need.</p>
+                                    <div className="in-line">
+                                        <p><Button className="button" onClick={() => handleWarningModal("https://www.calgaryfoodbank.com/")}>View Website</Button></p>
+                                        <p><Button className="button" onClick={() => handleShow(FoodBankQR)}>View on Mobile</Button></p>
+                                    </div>
+                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup(item.location.lat, item.location.lon)}>📍</Button></p>
+                                  </>
                                 )}
                                 {item.title === 'Centre for Newcomers' && (
-                                    <p>details and links</p>
+                                  <>
+                                    <p>Centre for Newcomers is a key resource for immigrants and refugees. Their services include employment, mental health, childcare and finding communities.</p>
+                                    <div className="in-line">
+                                        <p><Button className="button" onClick={() => handleWarningModal("https://www.centrefornewcomers.ca/")}>View Website</Button></p>
+                                        <p><Button className="button" onClick={() => handleShow(CentreForNewcomersQR)}>View on Mobile</Button></p>
+                                    </div>
+                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup(item.location.lat, item.location.lon)}>📍</Button></p>
+                                  </>
                                 )}
                             </Accordion.Body>
                         </Accordion.Item>
                     ))}
                 </Accordion>
             </div>
-
-            <Modal show={showModal} onHide={handleClose}>
+            <Modal show={showWarningModal} onHide={() => setShowWarningModal(false)}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Website QR Code</Modal.Title>
+                    <Modal.Title>Caution</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <img src={currentImage} alt="Download QR Code" style={{ width: '100%' }} />
+                    <p>Please do not enter any personal or sensitive information on external websites. If you need to access anything confidential, please select "View on Mobile".</p>
                 </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={() => setShowWarningModal(false)}>Go Back</Button>
+                    <Button variant="primary" onClick={openWebsite}>I Understand</Button>
+                </Modal.Footer>
+            </Modal>
+            <Modal show={showModal} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>View Mobile Site</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <img src={currentImage} alt="view QR code" style={{ width: '100%' }} />
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>Close</Button>
+                </Modal.Footer>
             </Modal>
         </div>
         </>

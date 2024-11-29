@@ -24,8 +24,11 @@ function HomePage2() {
   return (
     <>
       <div className='HomePageTitle'>
-      <Button className="BackButton" variant="danger" size="lg" onClick={() => navigate('/')}>
-      Retour à la sélection de la langue</Button>
+      <Button
+      className="BackButton"
+      variant="danger"
+      size="lg"
+      onClick={() => navigate('/')}><i class="bi bi-arrow-left"></i> Revenir</Button>
         <h1>Page d'accueil</h1>
       </div>
 
