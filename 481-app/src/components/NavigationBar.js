@@ -1,6 +1,6 @@
 import '../App.css';
 import BackButton from './BackButton';
-import EndSessionButton from './EndSessionButton';
+import EndSessionModal from './EndSessionModal';
 
 function NavigationBar() {
   return (
@@ -9,7 +9,7 @@ function NavigationBar() {
         <BackButton />
       </div>
       <div className="NavRight">
-        <EndSessionButton />
+       <EndSessionModal/>
       </div>
     </header>
   );
