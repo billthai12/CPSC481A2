@@ -22,12 +22,7 @@ function Transportation() {
     ];
 
     const sortAccordionItems = (items) => {
-        if (sortCriteria === 'lowToHigh') {
-            return [...items].sort((a, b) => a.price.localeCompare(b.price));
-        } else if (sortCriteria === 'highToLow') {
-            return [...items].sort((a, b) => b.price.localeCompare(a.price));
-        }
-        return [...items];
+        return [...items].sort((a, b) => a.price.localeCompare(b.price));
     };
 
     const handleSortChange = (e) => {
@@ -65,14 +60,6 @@ function Transportation() {
         <div className="Transportation">
             <div className="header-container">
                 <h1>Transportation</h1>
-                <div className="sort-container">
-                    <label htmlFor="sort">Sort by Price:</label>
-                    <select id="sort" value={sortCriteria} onChange={handleSortChange}>
-                        <option value="none">Default</option>
-                        <option value="lowToHigh">Low to High</option>
-                        <option value="highToLow">High to Low</option>
-                    </select>
-                </div>
             </div>
 
             <div className="accordion-container">
