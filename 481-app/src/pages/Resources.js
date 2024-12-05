@@ -249,7 +249,7 @@ function Resources() {
                                         <p><Button className="button" onClick={() => handleWarningModal("https://www.immigrantservicescalgary.ca/")}>View Website</Button></p>
                                         <p><Button className="button" onClick={() => handleShow(ImmigrantServicesCalgaryQR)}>View on Mobile</Button></p>
                                     </div>
-                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup(item.location.lat, item.location.lon)}>📍</Button></p>
+                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup(item.location.lat, item.location.lon)}>View on Map 📍</Button></p>
                                   </>
                                 )}
                                 {item.title === 'Calgary Public Library' && (
@@ -259,7 +259,7 @@ function Resources() {
                                         <p><Button className="button" onClick={() => handleWarningModal("https://www.calgarylibrary.ca/")}>View Website</Button></p>
                                         <p><Button className="button" onClick={() => handleShow(CPLQR)}>View on Mobile</Button></p>
                                     </div>
-                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup("library")}>📍</Button></p>
+                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup("library")}>View on Map📍</Button></p>
                                   </>
                                 )}
                                 {item.title === "Calgary Immigrant Women's Association" && (
@@ -269,7 +269,7 @@ function Resources() {
                                         <p><Button className="button" onClick={() => handleWarningModal("https://ciwa-online.com/")}>View Website</Button></p>
                                         <p><Button className="button" onClick={() => handleShow(CIWAQR)}>View on Mobile</Button></p>
                                     </div>
-                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup(item.location.lat, item.location.lon)}>📍</Button></p>
+                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup(item.location.lat, item.location.lon)}>View on Map 📍</Button></p>
                                   </>
                                 )}
                                 {item.title === 'Calgary Food Bank' && (
@@ -279,7 +279,7 @@ function Resources() {
                                         <p><Button className="button" onClick={() => handleWarningModal("https://www.calgaryfoodbank.com/")}>View Website</Button></p>
                                         <p><Button className="button" onClick={() => handleShow(FoodBankQR)}>View on Mobile</Button></p>
                                     </div>
-                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup(item.location.lat, item.location.lon)}>📍</Button></p>
+                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup(item.location.lat, item.location.lon)}>View on Map 📍</Button></p>
                                   </>
                                 )}
                                 {item.title === 'Centre for Newcomers' && (
@@ -289,7 +289,7 @@ function Resources() {
                                         <p><Button className="button" onClick={() => handleWarningModal("https://www.centrefornewcomers.ca/")}>View Website</Button></p>
                                         <p><Button className="button" onClick={() => handleShow(CentreForNewcomersQR)}>View on Mobile</Button></p>
                                     </div>
-                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup(item.location.lat, item.location.lon)}>📍</Button></p>
+                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup(item.location.lat, item.location.lon)}>View on Map 📍</Button></p>
                                   </>
                                 )}
                             </Accordion.Body>
