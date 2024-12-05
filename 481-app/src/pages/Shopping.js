@@ -11,7 +11,7 @@ import NavigationBar from '../components/NavigationBar';
 
 
 function Shopping() {
-    const [sortCriteria, setSortCriteria] = useState('none');
+    const [sortCriteria, setSortCriteria] = useState('price');
     const [showModal, setShowModal] = useState(false);
     const [currentImage, setCurrentImage] = useState('');
     const [selectedCategories, setSelectedCategories] = useState(new Set()); 
