@@ -5,6 +5,11 @@ import Modal from 'react-bootstrap/Modal';
 import NavigationBar from '../components/NavigationBar';
 import '../style/GovernmentServicesPage.css';
 
+import immigrationQR from '../images/governmentQR/immigrationQR.png';
+import legalServicesQR from '../images/governmentQR/legalServicesQR.png';
+import serviceCanadaQR from '../images/governmentQR/serviceCanadaQR.png';
+
+
 const servicesData = [
     {
         title: 'Service Canada',
@@ -20,6 +25,7 @@ const servicesData = [
         ),
         learnMoreUrl: "https://www.canada.ca/en/employment-social-development/corporate/portfolio/service-canada.html",
         mapUrl: "https://www.google.com/maps?q=Service+Canada",
+        qr: serviceCanadaQR
     },
     {
         title: 'Immigration',
@@ -35,6 +41,7 @@ const servicesData = [
         ),
         learnMoreUrl: "https://www.canada.ca/en/services/immigration-citizenship.html",
         mapUrl: "https://www.google.com/maps?q=Immigration",
+        qr: immigrationQR
     },
     {
         title: 'Legal Services',
@@ -54,6 +61,7 @@ const servicesData = [
         ),
         learnMoreUrl: "https://clg.ab.ca/",
         mapUrl: "https://www.google.com/maps?q=Legal+Services",
+        qr: legalServicesQR
     }
 ];
 
@@ -97,6 +105,13 @@ function GovernmentServicesPage() {
                                             onClick={() => handleShowModal(service.learnMoreUrl)}
                                         >
                                             View Website
+                                        </Button>
+                                        <Button
+                                            variant="secondary"
+                                            className="map-btn"
+                                            onClick={() => handleShowModal(service.qr)}
+                                        >
+                                            View on Mobile
                                         </Button>
                                         <Button
                                             variant="secondary"
