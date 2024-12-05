@@ -13,7 +13,7 @@ import NavigationBar from '../components/NavigationBar';
 
 
 function Resources() {
-    const [sortCriteria, setSortCriteria] = useState('none');
+    const [sortCriteria, setSortCriteria] = useState('relevancy');
     const [showModal, setShowModal] = useState(false);
     const [currentImage, setCurrentImage] = useState('');
     const [selectedCategories, setSelectedCategories] = useState(new Set()); 
