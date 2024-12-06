@@ -246,10 +246,11 @@ function Shopping() {
                                     <p>Walmart is a large retail store that offers a wide variety of products, including groceries, clothing, electronics, and household items, often at lower prices. 
                                       It provides a one-stop shopping experience, making it convenient for customers to find everything they need in one place.</p>
                                     <div className="in-line">
+                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup("walmart")}>View on Map 📍</Button></p>
+
                                         <p><Button className="button" onClick={() => handleWarningModal("https://www.walmart.ca/en")}>View Website</Button></p>
                                         <p><Button className="button" onClick={() => handleShow(WalmartQR)}>View on Mobile</Button></p>
                                     </div>
-                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup("walmart")}>📍</Button></p>
                                   </>
                                 )}
                                 {item.title === 'Thrift Stores' && (
@@ -257,27 +258,29 @@ function Shopping() {
                                     <p>Calgary has several thrift stores where you can find secondhand clothes, furniture and household items at affordable prices.</p>
                                     <div className="in-line">
                                     </div>
-                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup("thrift stores")}>📍</Button></p>
+                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup("thrift stores")}>View on Map 📍</Button></p>
                                   </>
                                 )}
                                 {item.title === 'Home Hardware' && (
                                   <>
                                     <p>Home Hardware sells of various materials and tools for home improvement and construction projects.</p>
                                     <div className="in-line">
+                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup("home hardware")}>View on Map 📍</Button></p>
+
                                         <p><Button className="button" onClick={() => handleWarningModal("https://www.homehardware.ca/en/")}>View Website</Button></p>
                                         <p><Button className="button" onClick={() => handleShow(HHQR)}>View on Mobile</Button></p>
                                     </div>
-                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup("home hardware")}>📍</Button></p>
                                   </>
                                 )}
                                 {item.title === 'Canadian Tire' && (
                                   <>
                                     <p>Canadian Tire sells various products for home, vehicles, sports, and leisure.</p>
                                     <div className="in-line">
+                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup("canadian tire")}>View on Map 📍</Button></p>
+
                                         <p><Button className="button" onClick={() => handleWarningModal("https://www.canadiantire.ca/en.html")}>View Website</Button></p>
                                         <p><Button className="button" onClick={() => handleShow(CTQR)}>View on Mobile</Button></p>
                                     </div>
-                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup("canadian tire")}>📍</Button></p>
                                   </>
                                 )}
                                 {item.title === 'Shopping Malls' && (
@@ -285,7 +288,7 @@ function Shopping() {
                                     <p>Calgary has several shopping malls. Malls have multiple stores that sell new clothing, furniture, and many other products.</p>
                                     <div className="in-line">
                                     </div>
-                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup("shopping malls")}>📍</Button></p>
+                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup("shopping malls")}>View on Map 📍</Button></p>
                                   </>
                                 )}
                             </Accordion.Body>
