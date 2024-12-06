@@ -137,29 +137,17 @@ function Resources() {
     };
 
     const toggleCategory = (category) => {
-      setSelectedCategories((prevCategories) => {
-          const newCategories = new Set(prevCategories);
-  
-          if (category === "") { // If "All" is selected
-              newCategories.clear(); // Clear any selected categories
+      setSelectedCategories(() => {
+          if (category === "") {
+              return new Set(); // If "All" is selected, clear all other selections.
           } else {
-              // Toggle the selected category
-              if (newCategories.has(category)) {
-                  newCategories.delete(category);
-              } else {
-                  newCategories.add(category);
-              }
+              const newCategories = new Set();
+              newCategories.add(category); // Only add the clicked category.
+              return newCategories;
           }
-  
-          // If no categories are selected, show "All"
-          if (newCategories.size === 0) {
-              return new Set(); // Return empty set to show "All" results
-          }
-  
-          return newCategories;
       });
     };
-
+  
     const filteredAndSortedItems = sortAccordionItems(
         accordionItems.filter(item =>
           // Ensure that every selected category is in the item's categories
@@ -204,23 +192,24 @@ function Resources() {
             <div className="filter-buttons">
                 {['All', 'Employment', 'Finances', 'Housing', 'Food', 'Childcare', 'Communities', 'Mental Health', 'Other'].map(category => (
                     <Button
-                      key={category}
-                      variant={
-                          (category === "All" && selectedCategories.size === 0) || 
-                          selectedCategories.has(category)
-                              ? 'primary'
-                              : 'outline-primary'
-                      }
-                      onClick={() => toggleCategory(category === "All" ? "" : category)}
-                      style={{
-                          backgroundColor: (category === "All" && selectedCategories.size === 0) || selectedCategories.has(category) ? 'black' : '#808080',
-                          color: 'white',
-                          border: '1px solid black', // black outline
-                          margin: '5px' // add spacing between buttons
-                      }}
-                    >
-                        {category.charAt(0).toUpperCase() + category.slice(1)}
-                    </Button>
+                    key={category}
+                    variant={
+                        (category === "All" && selectedCategories.size === 0) || 
+                        selectedCategories.has(category)
+                            ? 'primary'
+                            : 'outline-primary'
+                    }
+                    onClick={() => toggleCategory(category === "All" ? "" : category)}
+                    style={{
+                        backgroundColor: (category === "All" && selectedCategories.size === 0) || selectedCategories.has(category) ? 'black' : '#808080',
+                        color: 'white',
+                        border: '1px solid black', // black outline
+                        margin: '5px' // add spacing between buttons
+                    }}
+                  >
+                      {category.charAt(0).toUpperCase() + category.slice(1)}
+                  </Button>
+                  
                 ))}
             </div>
 
