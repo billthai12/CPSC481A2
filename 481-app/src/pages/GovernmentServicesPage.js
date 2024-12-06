@@ -69,10 +69,15 @@ function GovernmentServicesPage() {
     const [showModal, setShowModal] = useState(false);
     const [redirectUrl, setRedirectUrl] = useState('');
 
-    const handleShowModal = (url) => {
-        setRedirectUrl(url);
-        setShowModal(true);
+    const handleShowModal = (url, showWarning = true) => {
+        if (showWarning) {
+            setRedirectUrl(url);
+            setShowModal(true);
+        } else {
+            window.open(url, 'Popup', 'width=800,height=600,menubar=no,toolbar=no,location=no,status=no');
+        }
     };
+    
 
     const handleCloseModal = () => setShowModal(false);
 
@@ -100,52 +105,53 @@ function GovernmentServicesPage() {
                                     </div>
                                     <div className="button-section">
                                     <Button
-                                            variant="secondary"
-                                            className="map-btn"
-                                            onClick={() => handleShowModal(service.mapUrl)}
-                                        >
-                                            View on Map 📍
-                                        </Button>
-                                        <Button
-                                            variant="primary"
-                                            className="learn-more-btn"
-                                            onClick={() => handleShowModal(service.learnMoreUrl)}
-                                        >
-                                            View Website
-                                        </Button>
-                                        <Button
-                                            variant="secondary"
-                                            className="map-btn"
-                                            onClick={() => handleShowModal(service.qr)}
-                                        >
-                                            View on Mobile
-                                        </Button>
-                             
+    variant="secondary"
+    className="map-btn"
+    onClick={() => handleShowModal(service.mapUrl, false)} 
+>
+    View on Map 📍
+</Button>
+<Button
+    variant="primary"
+    className="map-btn"
+    onClick={() => handleShowModal(service.learnMoreUrl)}
+>
+    View Website
+</Button>
+<Button
+    variant="secondary"
+    className="map-btn"
+    onClick={() => handleShowModal(service.qr)}
+>
+    View on Mobile
+</Button>
                                     </div>
                                 </Accordion.Body>
                             </Accordion.Item>
                         ))}
                     </Accordion>
                 </div>
-            </div>
-
+                
             {/* Warning Modal */}
             <Modal show={showModal} onHide={handleCloseModal} centered>
                 <Modal.Header closeButton>
-                    <Modal.Title>Warning</Modal.Title>
+                    <Modal.Title>Caution
+                    </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    You are about to leave this page and visit an external website. Are you sure you want to continue?
+                    <p>Please do not enter any personal or sensitive information on external websites. If you need to access anything confidential, please select "View on Mobile".</p>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleCloseModal}>
-                        Cancel
+                    Go Back
                     </Button>
                     <Button variant="primary" onClick={handleConfirmRedirect}>
-                        Continue
+                    I Understand
                     </Button>
                 </Modal.Footer>
             </Modal>
+            </div>
+
         </>
     );
 }
