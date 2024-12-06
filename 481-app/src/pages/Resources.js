@@ -246,50 +246,55 @@ function Resources() {
                                   <>
                                     <p>Immigrant Services Calgary offers a range of services to support people who are settling into a new life in Canada, including: job support, translation, English testing, and help for families.</p>
                                     <div className="in-line">
+                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup(item.location.lat, item.location.lon)}>View on Map 📍</Button></p>
+
                                         <p><Button className="button" onClick={() => handleWarningModal("https://www.immigrantservicescalgary.ca/")}>View Website</Button></p>
                                         <p><Button className="button" onClick={() => handleShow(ImmigrantServicesCalgaryQR)}>View on Mobile</Button></p>
                                     </div>
-                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup(item.location.lat, item.location.lon)}>View on Map 📍</Button></p>
                                   </>
                                 )}
                                 {item.title === 'Calgary Public Library' && (
                                   <>
                                     <p>Calgary Public Library provides free access to the internet and books. They also provide different services and programs which you can explore on their website.</p>
                                     <div className="in-line">
+                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup("library")}>View on Map📍</Button></p>
+
                                         <p><Button className="button" onClick={() => handleWarningModal("https://www.calgarylibrary.ca/")}>View Website</Button></p>
                                         <p><Button className="button" onClick={() => handleShow(CPLQR)}>View on Mobile</Button></p>
                                     </div>
-                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup("library")}>View on Map📍</Button></p>
                                   </>
                                 )}
                                 {item.title === "Calgary Immigrant Women's Association" && (
                                   <>
                                     <p>CIWA supports immigrant and refugee women, girls and their families. They have numerous services that include employement, housing, childcare and mental health.</p>
                                     <div className="in-line">
+                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup(item.location.lat, item.location.lon)}>View on Map 📍</Button></p>
+
                                         <p><Button className="button" onClick={() => handleWarningModal("https://ciwa-online.com/")}>View Website</Button></p>
                                         <p><Button className="button" onClick={() => handleShow(CIWAQR)}>View on Mobile</Button></p>
                                     </div>
-                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup(item.location.lat, item.location.lon)}>View on Map 📍</Button></p>
                                   </>
                                 )}
                                 {item.title === 'Calgary Food Bank' && (
                                   <>
                                     <p>Calgary Food Bank is the first line of emergency food support for individuals and families in need.</p>
                                     <div className="in-line">
+                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup(item.location.lat, item.location.lon)}>View on Map 📍</Button></p>
+
                                         <p><Button className="button" onClick={() => handleWarningModal("https://www.calgaryfoodbank.com/")}>View Website</Button></p>
                                         <p><Button className="button" onClick={() => handleShow(FoodBankQR)}>View on Mobile</Button></p>
                                     </div>
-                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup(item.location.lat, item.location.lon)}>View on Map 📍</Button></p>
                                   </>
                                 )}
                                 {item.title === 'Centre for Newcomers' && (
                                   <>
                                     <p>Centre for Newcomers is a key resource for immigrants and refugees. Their services include employment, mental health, childcare and finding communities.</p>
                                     <div className="in-line">
+                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup(item.location.lat, item.location.lon)}>View on Map 📍</Button></p>
+
                                         <p><Button className="button" onClick={() => handleWarningModal("https://www.centrefornewcomers.ca/")}>View Website</Button></p>
                                         <p><Button className="button" onClick={() => handleShow(CentreForNewcomersQR)}>View on Mobile</Button></p>
                                     </div>
-                                    <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup(item.location.lat, item.location.lon)}>View on Map 📍</Button></p>
                                   </>
                                 )}
                             </Accordion.Body>

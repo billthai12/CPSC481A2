@@ -99,6 +99,13 @@ function GovernmentServicesPage() {
                                         {service.description}
                                     </div>
                                     <div className="button-section">
+                                    <Button
+                                            variant="secondary"
+                                            className="map-btn"
+                                            onClick={() => handleShowModal(service.mapUrl)}
+                                        >
+                                            View on Map 📍
+                                        </Button>
                                         <Button
                                             variant="primary"
                                             className="learn-more-btn"
@@ -113,13 +120,7 @@ function GovernmentServicesPage() {
                                         >
                                             View on Mobile
                                         </Button>
-                                        <Button
-                                            variant="secondary"
-                                            className="map-btn"
-                                            onClick={() => handleShowModal(service.mapUrl)}
-                                        >
-                                            View on Map 📍
-                                        </Button>
+                             
                                     </div>
                                 </Accordion.Body>
                             </Accordion.Item>
