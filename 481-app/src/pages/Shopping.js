@@ -248,7 +248,6 @@ function Shopping() {
                                     <div className="in-line">
                                         <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup("thrift stores")}>View on Map📍</Button></p>
                                     </div>
-                                    
                                   </>
                                 )}
                                 {item.title === 'Home Hardware' && (
@@ -276,8 +275,7 @@ function Shopping() {
                                     <p>Calgary has several shopping malls. Malls have multiple stores that sell new clothing, furniture, and many other products.</p>
                                     <div className="in-line">
                                         <p><Button variant="outline-primary" className = "button" onClick={() => openMapPopup("shopping malls")}>View on Map📍</Button></p>
-                                    </div>
-                                    
+                                    </div>              
                                   </>
                                 )}
                             </Accordion.Body>
