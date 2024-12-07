@@ -137,7 +137,6 @@ function GovernmentServicesPage() {
                     </Accordion>
                 </div>
 
-                {}
                 <Modal show={showWarningModal} onHide={handleCloseModal} centered>
                     <Modal.Header closeButton>
                         <Modal.Title>Caution</Modal.Title>

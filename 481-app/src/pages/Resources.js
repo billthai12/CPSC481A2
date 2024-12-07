@@ -177,7 +177,6 @@ function Resources() {
         <NavigationBar />
         <div className="Resources">
             <h1>Resources</h1>
-            {}
             <div className="filter-buttons">
                 {['All', 'Employment', 'Finances', 'Housing', 'Food', 'Childcare', 'Communities', 'Mental Health', 'Other'].map(category => (
                     <Button
@@ -202,8 +201,6 @@ function Resources() {
                 ))}
             </div>
 
-
-            {}
             <div className="sort-container">
                 <label htmlFor="sort">Sort by:</label>
                 <select id="sort" value={sortCriteria} onChange={handleSortChange}>
@@ -213,7 +210,6 @@ function Resources() {
                 </select>
             </div>
 
-            {}
             <div className="accordion-container">
                 <Accordion defaultActiveKey={null}>
                     {filteredAndSortedItems.map(item => (
